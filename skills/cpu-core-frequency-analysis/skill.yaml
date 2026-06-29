@@ -1,0 +1,28 @@
+name: cpu-core-frequency-analysis
+version: 7.1.0
+stage: diagnostic
+entrypoint: skill.py
+documentation: SKILL.md
+requires:
+- phase-localizer
+optional_requires:
+- running-analysis
+- runnable-analysis
+trigger: routed
+interface:
+  function: run(state, config)
+  state_model: app_entry_rca.core.models.AnalysisState
+produces:
+- cpu_core_frequency
+- cpu_core_frequency_by_subject
+- cpu_core_frequency_summary
+- cpu_core_frequency.json
+missing_evidence_policy: NOT_OBSERVABLE
+contract_version: '6.0'
+evidence_policy: evidence_first
+config:
+  top_subjects: 80
+  little_cpus: []
+  big_cpus: []
+  prime_cpus: []
+  cpu_clusters: {}

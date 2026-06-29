@@ -1,0 +1,109 @@
+# Folder Structure: `P260528-02070` (A077F Issue-BOS)
+
+**Network path:**
+`\\107.113.53.40\memory_sluggish\Performance TG\Projects\2026_Projects\COS\A077F\Issue-BOS\P260528-02070`
+
+---
+
+## Top-level: 5 device/build subdirectories
+
+| # | Folder Name | Device | OS | RAM | Build/Date | Role |
+|---|-------------|--------|----|-----|------------|------|
+| 1 | `A075FYG3_VOS_4GB_250709_log_REF-OLD` | A075F | VOS | 4GB | 250709 | REF (old) |
+| 2 | `A075FZEA_BOS_4GB_85_260605_LOG-REF-NEW` | A075F | BOS | 4GB | 260605 | REF (new) |
+| 3 | `A077FZE5_BOS_85_4GB_260527_log` | A077F | BOS | 4GB | 260527 | DUT candidate |
+| 4 | `A077FZF1_BOS_260605_log` | A077F | BOS | — | 260605 | DUT candidate |
+| 5 | `A077FZF3_BOS_85_4GB_260623_log` | A077F | BOS | 4GB | 260623 | DUT (latest) |
+
+**Primary DUT-REF pair** (per comparison data): DUT = `A077FZF3`, REF = `A075FZEA`
+
+---
+
+## File types within each subdirectory
+
+### 1. Trace logs (`.log`) — systrace/atrace traces
+
+- **Format:** zlib-compressed systrace. The file starts with the text `capturing trace... done\nTRACE:\n`, followed by a zlib-compressed binary payload containing ftrace events (sched_switch, sched_wakeup, tracing_mark_write/atrace markers, etc.).
+- **Naming convention:**
+  ```
+  <device>_<os>_<ram>_<builddate>_S1_<YYMMDD>_<HHMMSS>_<appname>.log
+  ```
+  Example: `A075FYG3_VOS_4GB_250709_S1_250709_092927_helloworld.log`
+- **18 apps tested:**
+  `helloworld`, `calllog`, `dial`, `clock`, `contact`, `calendar`, `calculator`, `gallery`, `message`, `menu`, `myfile`, `sip`, `internet`, `note`, `setting`, `voice`, `recent`, `camera`
+- **30 `.log` files per app** across all folders (multiple sessions × 2 iterations per app per session).
+- **Size:** 0.79–5.06 MB each (camera traces are larger: ~4–5 MB; other apps: ~1–4 MB).
+- **Usage:** Input to `app_entry_rca.py --dut <DUT.log> --ref <REF.log>`. The tool auto-detects the systrace format and decompresses it.
+
+### 2. Memory marker files (`Start_LogFile` / `End_LogFile`) — no file extension
+
+- **Format:** Plain text — Linux `/proc/meminfo` snapshot.
+- **Content fields:**
+  ```
+  MemTotal, MemFree, MemAvailable, Buffers, Cached, SwapCached,
+  Active, Inactive, Active(anon), Inactive(anon), Active(file), Inactive(file),
+  Unevictable, Mlocked, SwapTotal, SwapFree, Dirty, Writeback,
+  AnonPages, Mapped, Shmem, KReclaimable, Slab, SReclaimable, SUnreclaim,
+  KernelStack, ShadowCallStack, PageTables, NFS_Unstable, Bounce, ...
+  ```
+- **Naming convention:**
+  ```
+  <device>_<os>_<ram>_<builddate>_S1_<YYMMDD>_<HHMMSS>_<appname>_Start_LogFile
+  <device>_<os>_<ram>_<builddate>_S1_<YYMMDD>_<HHMMSS>_<appname>_End_LogFile
+  ```
+  Example: `A075FYG3_VOS_4GB_250709_S1_250709_091132_helloworld_Start_LogFile`
+- **Count:** 270 Start + 270 End = 540 marker files total (across all 5 subdirectories).
+- **Size:** ~0.01 MB each (~10 KB).
+- **Purpose:** Memory state snapshot captured immediately before (`Start`) and after (`End`) each app launch. Used for memory comparison analysis.
+
+### 3. Bug reports (`Bugreport.zip`)
+
+- **Naming convention:**
+  ```
+  <device>_<os>_<ram>_<builddate>_S1_<YYMMDD>_<HHMMSS>_<N>part_Bugreport.zip
+  ```
+  Where `<N>` = 1 through 6.
+  Example: `A075FYG3_VOS_4GB_250709_S1_250709_092044_1part_Bugreport.zip`
+- **6 parts per test session**, captured between app groups.
+- **Size:** ~10–12 MB each.
+- **Purpose:** Full Android bug report (dumpstate) captured at intervals during the test session for system-level diagnostics.
+
+---
+
+## Test session pattern (per subdirectory)
+
+Each subdirectory contains one or more test sessions. Each session follows this fixed sequence:
+
+| Step | Content | Files |
+|------|---------|-------|
+| 1 | Camera warmup | 2 × `camera.log` |
+| 2 | Bug report | `1part_Bugreport.zip` |
+| 3 | App group 1 (×2 iterations each): helloworld, calllog, dial, clock | 8 × `<app>.log` |
+| 4 | Bug report | `2part_Bugreport.zip` |
+| 5 | App group 2 (×2 iterations each): contact, calendar, calculator | 6 × `<app>.log` |
+| 6 | Bug report | `3part_Bugreport.zip` |
+| 7 | App group 3 (×2 iterations each): gallery, message, menu | 6 × `<app>.log` |
+| 8 | Bug report | `4part_Bugreport.zip` |
+| 9 | App group 4 (×2 iterations each): myfile, sip, internet | 6 × `<app>.log` |
+| 10 | Bug report | `5part_Bugreport.zip` |
+| 11 | App group 5 (×2 iterations each): note, setting, voice, recent | 8 × `<app>.log` |
+| 12 | Bug report | `6part_Bugreport.zip` |
+| 13 | Start/End memory markers for all 18 apps | 36 × `Start_LogFile` + 36 × `End_LogFile` |
+
+**Per session totals:** 34 trace logs (2 camera + 32 app) + 6 bug reports + 72 memory markers.
+
+---
+
+## How to use with `app_entry_rca`
+
+To run the RCA workflow on a specific DUT-REF pair:
+
+```bash
+python app_entry_rca.py \
+  --dut "\\\\107.113.53.40\memory_sluggish\Performance TG\Projects\2026_Projects\COS\A077F\Issue-BOS\P260528-02070\A077FZF3_BOS_85_4GB_260623_log\A077FZF3_BOS_85_4GB_260623_S1_260623_223907_helloworld.log" \
+  --ref "\\\\107.113.53.40\memory_sluggish\Performance TG\Projects\2026_Projects\COS\A077F\Issue-BOS\P260528-02070\A075FZEA_BOS_4GB_85_260605_LOG-REF-NEW\A075FZEA_BOS_4GB_85_260605_S1_260605_<HHMMSS>_helloworld.log" \
+  --out "C:\Workspace\FTA\A077F\result_helloworld" \
+  --include-better-final
+```
+
+The tool auto-detects the systrace format (`--backend auto`) and decompresses the zlib payload internally. No `trace_processor_shell` is required for these text-based traces.

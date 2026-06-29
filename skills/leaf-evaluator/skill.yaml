@@ -1,0 +1,17 @@
+name: leaf-evaluator
+version: 6.3.0
+stage: evaluation
+entrypoint: skill.py
+documentation: SKILL.md
+requires:
+- phase-localizer
+optional_requires: []
+trigger: always
+interface:
+  function: run(state, config)
+  state_model: app_entry_rca.core.models.AnalysisState
+produces:
+- all_leaf_nodes
+missing_evidence_policy: NOT_OBSERVABLE
+contract_version: '6.0'
+evidence_policy: evidence_first

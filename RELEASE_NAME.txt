@@ -1,0 +1,6 @@
+app_entry_rca
+
+Canonical app-entry RCA project.
+- P1-P7 are canonical app-entry timeline phases.
+- P8 is cross-cutting system evidence only.
+- App/build version metadata is diagnostic only, not a comparability gate.

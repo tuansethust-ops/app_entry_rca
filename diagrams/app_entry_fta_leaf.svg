@@ -1,0 +1,330 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2502" height="1587" viewBox="0 0 2502 1587">
+
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L8,3 z" fill="#334155" />
+  </marker>
+  <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.12"/>
+  </filter>
+  <linearGradient id="headerGrad" x1="0" x2="1">
+    <stop offset="0%" stop-color="#0f172a"/>
+    <stop offset="100%" stop-color="#1e3a8a"/>
+  </linearGradient>
+</defs>
+
+<rect x="0" y="0" width="2502" height="1587" rx="0" fill="#ffffff" stroke="#ffffff" stroke-width="0" opacity="1"/>
+<rect x="36" y="24" width="2430" height="90" rx="16" fill="#ffffff" stroke="#1e3a8a" stroke-width="2.0" opacity="1"/>
+<text x="1251.0" y="62" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="32" font-weight="800" fill="#0f2a4d" text-anchor="middle">app_entry_fta_leaf</text>
+<text x="1251.0" y="92" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="500" fill="#334155" text-anchor="middle">Canonical app-entry FTA built from current nodes and leaf nodes</text>
+<rect x="1071.0" y="145" width="360" height="58" rx="10" fill="url(#headerGrad)" stroke="#0f172a" stroke-width="1.0" opacity="1"/>
+<text x="1251.0" y="182" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" fill="#ffffff" text-anchor="middle">App Entry RCA / FTA</text>
+<line x1="1251.0" y1="114" x2="1251.0" y2="145" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="1251.0" y1="203" x2="1251.0" y2="186" stroke="#334155" stroke-width="1.4"/>
+<line x1="201.0" y1="186" x2="2301.0" y2="186" stroke="#334155" stroke-width="1.5"/>
+<line x1="201.0" y1="186" x2="201.0" y2="240" stroke="#334155" stroke-width="1.4" marker-end="url(#arrow)"/>
+<rect x="36" y="240" width="330" height="592" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="1.6" opacity="1"/>
+<rect x="36" y="240" width="330" height="68" rx="14" fill="#2563eb" stroke="#2563eb" stroke-width="1.6" opacity="1"/>
+<text x="201.0" y="268" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="800" fill="#ffffff" text-anchor="middle">P1 — Touch Duration</text>
+<rect x="48" y="322" width="306" height="114" rx="10" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2" opacity="1"/>
+<text x="201.0" y="346" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#2563eb" text-anchor="middle">Input event window</text>
+<text x="60" y="374" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• touch down</text>
+<text x="60" y="390" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• touch up</text>
+<text x="60" y="406" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• touch down -&gt; touch up</text>
+<rect x="48" y="450" width="306" height="210" rx="10" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2" opacity="1"/>
+<text x="201.0" y="474" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#2563eb" text-anchor="middle">system_server input</text>
+<text x="201.0" y="491" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#2563eb" text-anchor="middle">dispatch</text>
+<text x="60" y="502" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• InputDispatcher::notifyMotion</text>
+<text x="60" y="518" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• dispatchMotionLocked</text>
+<text x="60" y="534" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• findTouchedWindowTargets</text>
+<text x="60" y="550" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• prepareDispatchCycleLocked</text>
+<text x="60" y="566" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">•</text>
+<text x="60" y="582" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">enqueueDispatchEntryAndStartDispatchCycleLocked</text>
+<text x="60" y="598" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• startDispatchCycleLocked</text>
+<text x="60" y="614" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• publishMotionEvent(action=DOWN)</text>
+<text x="60" y="630" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• publishMotionEvent(action=UP)</text>
+<rect x="48" y="674" width="306" height="130" rx="10" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2" opacity="1"/>
+<text x="201.0" y="698" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#2563eb" text-anchor="middle">Launcher input handling</text>
+<text x="60" y="726" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• deliverInputEvent</text>
+<text x="60" y="742" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• Launcher click handler</text>
+<text x="60" y="758" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• ActiveLaunch</text>
+<text x="60" y="774" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• launcher startActivity</text>
+<line x1="551.0" y1="186" x2="551.0" y2="240" stroke="#334155" stroke-width="1.4" marker-end="url(#arrow)"/>
+<rect x="386" y="240" width="330" height="592" rx="14" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.6" opacity="1"/>
+<rect x="386" y="240" width="330" height="68" rx="14" fill="#0f766e" stroke="#0f766e" stroke-width="1.6" opacity="1"/>
+<text x="551.0" y="268" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="800" fill="#ffffff" text-anchor="middle">P2 — Launch Preparation</text>
+<rect x="398" y="322" width="306" height="274" rx="10" fill="#ffffff" stroke="#5eead4" stroke-width="1.2" opacity="1"/>
+<text x="551.0" y="346" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f766e" text-anchor="middle">P2-1 system_server +</text>
+<text x="551.0" y="363" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f766e" text-anchor="middle">launcher workflow</text>
+<text x="410" y="374" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• startActivity</text>
+<text x="410" y="390" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">•</text>
+<text x="410" y="406" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">IActivityTaskManager::startActivity</text>
+<text x="410" y="422" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">server side</text>
+<text x="410" y="438" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">•</text>
+<text x="410" y="454" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">shouldAbortBackgroundActivityStart</text>
+<text x="410" y="470" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• startActivityInner</text>
+<text x="410" y="486" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• activityPause</text>
+<text x="410" y="502" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• performPause</text>
+<text x="410" y="518" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• Launcher onPause</text>
+<text x="410" y="534" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• WMS / transition setup</text>
+<text x="410" y="550" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• ClientTransaction construction</text>
+<text x="410" y="566" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• lifecycle transaction delivery</text>
+<rect x="398" y="610" width="306" height="194" rx="10" fill="#ffffff" stroke="#5eead4" stroke-width="1.2" opacity="1"/>
+<text x="551.0" y="634" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f766e" text-anchor="middle">P2-2 target app process</text>
+<text x="551.0" y="651" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f766e" text-anchor="middle">launch</text>
+<text x="410" y="662" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• process start request</text>
+<text x="410" y="678" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• Start proc</text>
+<text x="410" y="694" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• process fork</text>
+<text x="410" y="710" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• PostFork</text>
+<text x="410" y="726" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• ZygoteInit</text>
+<text x="410" y="742" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• ActivityThreadMain</text>
+<text x="410" y="758" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• app process scheduling</text>
+<text x="410" y="774" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• ActivityThread.attach</text>
+<line x1="901.0" y1="186" x2="901.0" y2="240" stroke="#334155" stroke-width="1.4" marker-end="url(#arrow)"/>
+<rect x="736" y="240" width="330" height="760" rx="14" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6" opacity="1"/>
+<rect x="736" y="240" width="330" height="68" rx="14" fill="#16a34a" stroke="#16a34a" stroke-width="1.6" opacity="1"/>
+<text x="901.0" y="268" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="800" fill="#ffffff" text-anchor="middle">P3 — bindApplication /</text>
+<text x="901.0" y="288" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="800" fill="#ffffff" text-anchor="middle">activityStart</text>
+<text x="752" y="324" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="500" fill="#475569" text-anchor="start">Cold: bindApplication; Warm:</text>
+<text x="752" y="338" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="500" fill="#475569" text-anchor="start">activityStart</text>
+<rect x="748" y="364" width="306" height="242" rx="10" fill="#ffffff" stroke="#86efac" stroke-width="1.2" opacity="1"/>
+<text x="901.0" y="388" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#16a34a" text-anchor="middle">Framework bindApplication</text>
+<text x="901.0" y="405" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#16a34a" text-anchor="middle">dispatch</text>
+<text x="760" y="416" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">•</text>
+<text x="760" y="432" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">IApplicationThread::bindApplication</text>
+<text x="760" y="448" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">server side</text>
+<text x="760" y="464" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• bindApplication</text>
+<text x="760" y="480" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• ActivityThread</text>
+<text x="760" y="496" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">handleBindApplication</text>
+<text x="760" y="512" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">•</text>
+<text x="760" y="528" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">ResourcesManager#applyConfigurationToResources</text>
+<text x="760" y="544" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• createClassloaderNamespace</text>
+<text x="760" y="560" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• setupGraphicsSupport</text>
+<text x="760" y="576" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• Setup proxies</text>
+<rect x="748" y="620" width="306" height="130" rx="10" fill="#ffffff" stroke="#86efac" stroke-width="1.2" opacity="1"/>
+<text x="901.0" y="644" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#16a34a" text-anchor="middle">Application creation and</text>
+<text x="901.0" y="661" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#16a34a" text-anchor="middle">startup</text>
+<text x="760" y="672" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• makeApplication</text>
+<text x="760" y="688" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• Application attach</text>
+<text x="760" y="704" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• Application onCreate</text>
+<text x="760" y="720" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• app Startup</text>
+<rect x="748" y="764" width="306" height="210" rx="10" fill="#ffffff" stroke="#86efac" stroke-width="1.2" opacity="1"/>
+<text x="901.0" y="788" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#16a34a" text-anchor="middle">Runtime/resource bootstrap</text>
+<text x="901.0" y="805" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#16a34a" text-anchor="middle">during bindApplication</text>
+<text x="760" y="816" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• OpenDexFilesFromOat</text>
+<text x="760" y="832" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• AppImage:Loading</text>
+<text x="760" y="848" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• class loading / dex / resource</text>
+<text x="760" y="864" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">loading</text>
+<text x="760" y="880" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• LoadApkAssets / ApkAssets</text>
+<text x="760" y="896" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• LoadedArsc / LoadedPackage</text>
+<text x="760" y="912" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">parsing</text>
+<text x="760" y="928" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• native linker / dlopen /</text>
+<text x="760" y="944" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">JNI_OnLoad</text>
+<line x1="1251.0" y1="186" x2="1251.0" y2="240" stroke="#334155" stroke-width="1.4" marker-end="url(#arrow)"/>
+<rect x="1086" y="240" width="330" height="712" rx="14" fill="#fff7ed" stroke="#ea580c" stroke-width="1.6" opacity="1"/>
+<rect x="1086" y="240" width="330" height="68" rx="14" fill="#ea580c" stroke="#ea580c" stroke-width="1.6" opacity="1"/>
+<text x="1251.0" y="268" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="800" fill="#ffffff" text-anchor="middle">P4 — activityStart /</text>
+<text x="1251.0" y="288" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="800" fill="#ffffff" text-anchor="middle">activityResume</text>
+<text x="1102" y="324" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="500" fill="#475569" text-anchor="start">Cold: activityStart; Warm:</text>
+<text x="1102" y="338" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="500" fill="#475569" text-anchor="start">activityResume</text>
+<rect x="1098" y="364" width="306" height="194" rx="10" fill="#ffffff" stroke="#fdba74" stroke-width="1.2" opacity="1"/>
+<text x="1251.0" y="388" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#ea580c" text-anchor="middle">Activity start lifecycle</text>
+<text x="1110" y="416" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• activityStart</text>
+<text x="1110" y="432" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• lifecycle transaction</text>
+<text x="1110" y="448" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• performLaunchActivity</text>
+<text x="1110" y="464" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• performCreate:&lt;Activity&gt;</text>
+<text x="1110" y="480" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• Activity attach</text>
+<text x="1110" y="496" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• Activity onCreate</text>
+<text x="1110" y="512" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• APP_handleStart</text>
+<text x="1110" y="528" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• saved-state restore</text>
+<rect x="1098" y="572" width="306" height="210" rx="10" fill="#ffffff" stroke="#fdba74" stroke-width="1.2" opacity="1"/>
+<text x="1251.0" y="596" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#ea580c" text-anchor="middle">Activity UI/resource</text>
+<text x="1251.0" y="613" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#ea580c" text-anchor="middle">creation</text>
+<text x="1110" y="624" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• inflate</text>
+<text x="1110" y="640" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• initManager</text>
+<text x="1110" y="656" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">•</text>
+<text x="1110" y="672" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">ResourcesManager#createBaseActivityResources</text>
+<text x="1110" y="688" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• Theme::ApplyStyle</text>
+<text x="1110" y="704" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• AssetManager::OpenXmlAsset</text>
+<text x="1110" y="720" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• view creation</text>
+<text x="1110" y="736" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• Fragment / Compose construction</text>
+<text x="1110" y="752" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• first visible content setup</text>
+<rect x="1098" y="796" width="306" height="130" rx="10" fill="#ffffff" stroke="#fdba74" stroke-width="1.2" opacity="1"/>
+<text x="1251.0" y="820" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#ea580c" text-anchor="middle">activityStart handoff and</text>
+<text x="1251.0" y="837" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#ea580c" text-anchor="middle">scheduling</text>
+<text x="1110" y="848" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• activityStart gate gap</text>
+<text x="1110" y="864" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• app main thread scheduling</text>
+<text x="1110" y="880" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• binder / lock wait before</text>
+<text x="1110" y="896" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">onCreate</text>
+<line x1="1601.0" y1="186" x2="1601.0" y2="240" stroke="#334155" stroke-width="1.4" marker-end="url(#arrow)"/>
+<rect x="1436" y="240" width="330" height="504" rx="14" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.6" opacity="1"/>
+<rect x="1436" y="240" width="330" height="68" rx="14" fill="#7c3aed" stroke="#7c3aed" stroke-width="1.6" opacity="1"/>
+<text x="1601.0" y="268" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="800" fill="#ffffff" text-anchor="middle">P5 — activityResume /</text>
+<text x="1601.0" y="288" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="800" fill="#ffffff" text-anchor="middle">first</text>
+<text x="1601.0" y="308" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="800" fill="#ffffff" text-anchor="middle">Choreographer#doFrame</text>
+<text x="1452" y="324" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="500" fill="#475569" text-anchor="start">Cold: activityResume; Warm: first</text>
+<text x="1452" y="338" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="500" fill="#475569" text-anchor="start">doFrame</text>
+<rect x="1448" y="364" width="306" height="178" rx="10" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.2" opacity="1"/>
+<text x="1601.0" y="388" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#7c3aed" text-anchor="middle">Activity resume lifecycle</text>
+<text x="1460" y="416" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• activityResume</text>
+<text x="1460" y="432" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• performResume:&lt;Activity&gt;</text>
+<text x="1460" y="448" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• Activity onResume</text>
+<text x="1460" y="464" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• lifecycle callback</text>
+<text x="1460" y="480" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">•</text>
+<text x="1460" y="496" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">IActivityClientController::activityResumed</text>
+<text x="1460" y="512" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">server side</text>
+<rect x="1448" y="556" width="306" height="162" rx="10" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.2" opacity="1"/>
+<text x="1601.0" y="580" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#7c3aed" text-anchor="middle">Post-resume app work</text>
+<text x="1460" y="608" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• app main thread work after</text>
+<text x="1460" y="624" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">resume</text>
+<text x="1460" y="640" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• binder / I/O / lock contention</text>
+<text x="1460" y="656" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">in onResume</text>
+<text x="1460" y="672" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• observer / callback dispatch</text>
+<text x="1460" y="688" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• first frame request from resume</text>
+<line x1="1951.0" y1="186" x2="1951.0" y2="240" stroke="#334155" stroke-width="1.4" marker-end="url(#arrow)"/>
+<rect x="1786" y="240" width="330" height="776" rx="14" fill="#ecfeff" stroke="#0891b2" stroke-width="1.6" opacity="1"/>
+<rect x="1786" y="240" width="330" height="68" rx="14" fill="#0891b2" stroke="#0891b2" stroke-width="1.6" opacity="1"/>
+<text x="1951.0" y="268" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="800" fill="#ffffff" text-anchor="middle">P6 — first</text>
+<text x="1951.0" y="288" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="800" fill="#ffffff" text-anchor="middle">Choreographer#doFrame /</text>
+<text x="1951.0" y="308" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="800" fill="#ffffff" text-anchor="middle">activityIdle</text>
+<text x="1802" y="324" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="500" fill="#475569" text-anchor="start">Cold: first doFrame; Warm:</text>
+<text x="1802" y="338" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="500" fill="#475569" text-anchor="start">activityIdle</text>
+<rect x="1798" y="364" width="306" height="146" rx="10" fill="#ffffff" stroke="#67e8f9" stroke-width="1.2" opacity="1"/>
+<text x="1951.0" y="388" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0891b2" text-anchor="middle">Frame scheduling and VSync</text>
+<text x="1810" y="416" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• Choreographer#doFrame</text>
+<text x="1810" y="432" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• scheduleTraversals</text>
+<text x="1810" y="448" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• VSync callback</text>
+<text x="1810" y="464" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• main Looper / message backlog</text>
+<text x="1810" y="480" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• missed VSync before traversal</text>
+<rect x="1798" y="524" width="306" height="194" rx="10" fill="#ffffff" stroke="#67e8f9" stroke-width="1.2" opacity="1"/>
+<text x="1951.0" y="548" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0891b2" text-anchor="middle">View traversal and draw</text>
+<text x="1810" y="576" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• traversal</text>
+<text x="1810" y="592" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• measure</text>
+<text x="1810" y="608" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• layout</text>
+<text x="1810" y="624" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• draw</text>
+<text x="1810" y="640" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• draw-VRI</text>
+<text x="1810" y="656" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• Record View#draw</text>
+<text x="1810" y="672" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• relayoutWindow#first=true</text>
+<text x="1810" y="688" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• repeated measure/layout pass</text>
+<rect x="1798" y="732" width="306" height="258" rx="10" fill="#ffffff" stroke="#67e8f9" stroke-width="1.2" opacity="1"/>
+<text x="1951.0" y="756" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0891b2" text-anchor="middle">Surface / RenderThread /</text>
+<text x="1951.0" y="773" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0891b2" text-anchor="middle">GPU path</text>
+<text x="1810" y="784" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• createSurfaceControl</text>
+<text x="1810" y="800" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">•</text>
+<text x="1810" y="816" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">ISurfaceComposerClient::createSurface</text>
+<text x="1810" y="832" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• RenderThread DrawFrames</text>
+<text x="1810" y="848" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• SyncAndDrawFrame</text>
+<text x="1810" y="864" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• Vulkan finish frame</text>
+<text x="1810" y="880" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• texture / glyph upload</text>
+<text x="1810" y="896" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• GraphicBuffer allocate /</text>
+<text x="1810" y="912" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">dequeueBuffer</text>
+<text x="1810" y="928" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• SurfaceFlinger / HWC</text>
+<text x="1810" y="944" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• GPU / fence wait</text>
+<text x="1810" y="960" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• frame / vsync</text>
+<line x1="2301.0" y1="186" x2="2301.0" y2="240" stroke="#334155" stroke-width="1.4" marker-end="url(#arrow)"/>
+<rect x="2136" y="240" width="330" height="800" rx="14" fill="#fef2f2" stroke="#dc2626" stroke-width="1.6" opacity="1"/>
+<rect x="2136" y="240" width="330" height="68" rx="14" fill="#dc2626" stroke="#dc2626" stroke-width="1.6" opacity="1"/>
+<text x="2301.0" y="268" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="800" fill="#ffffff" text-anchor="middle">P7 — activityIdle</text>
+<rect x="2148" y="322" width="306" height="290" rx="10" fill="#ffffff" stroke="#fca5a5" stroke-width="1.2" opacity="1"/>
+<text x="2301.0" y="346" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#dc2626" text-anchor="middle">activityIdle reporting</text>
+<text x="2160" y="374" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• activityIdle</text>
+<text x="2160" y="390" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• activityIdle client</text>
+<text x="2160" y="406" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• client-to-system_server</text>
+<text x="2160" y="422" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">activityIdle Binder delivery</text>
+<text x="2160" y="438" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">•</text>
+<text x="2160" y="454" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">IActivityClientController::activityIdle</text>
+<text x="2160" y="470" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">server side</text>
+<text x="2160" y="486" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• system_server idle reporting</text>
+<text x="2160" y="502" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• ActivityTaskManager state</text>
+<text x="2160" y="518" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">transition</text>
+<text x="2160" y="534" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• WindowSurfacePlacer</text>
+<text x="2160" y="550" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• WindowAnimator</text>
+<text x="2160" y="566" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• system_server activityIdle</text>
+<text x="2160" y="582" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">monitor / lock contention</text>
+<rect x="2148" y="626" width="306" height="226" rx="10" fill="#ffffff" stroke="#fca5a5" stroke-width="1.2" opacity="1"/>
+<text x="2301.0" y="650" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#dc2626" text-anchor="middle">Post-first-frame tail</text>
+<text x="2160" y="678" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• post-first-frame tail to</text>
+<text x="2160" y="694" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">activityIdle</text>
+<text x="2160" y="710" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• repeated Choreographer#doFrame</text>
+<text x="2160" y="726" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• RecyclerView OnLayout</text>
+<text x="2160" y="742" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• RecyclerView OnBindView</text>
+<text x="2160" y="758" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• adapter / list update</text>
+<text x="2160" y="774" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• VectorDrawable repaint</text>
+<text x="2160" y="790" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• IdleHandler / MessageQueue work</text>
+<text x="2160" y="806" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• reportFullyDrawn / custom-ready</text>
+<text x="2160" y="822" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">delay</text>
+<rect x="2148" y="866" width="306" height="146" rx="10" fill="#ffffff" stroke="#fca5a5" stroke-width="1.2" opacity="1"/>
+<text x="2301.0" y="890" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#dc2626" text-anchor="middle">Measurement endpoint</text>
+<text x="2301.0" y="907" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#dc2626" text-anchor="middle">validation</text>
+<text x="2160" y="918" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• first frame vs activityIdle</text>
+<text x="2160" y="934" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">endpoint</text>
+<text x="2160" y="950" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• marker belongs to wrong Activity</text>
+<text x="2160" y="966" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• different DUT/REF endpoint</text>
+<text x="2160" y="982" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">policy</text>
+<rect x="36" y="1094" width="2430" height="336" rx="14" fill="#eff6ff" stroke="#1e3a8a" stroke-width="1.7" opacity="1"/>
+<rect x="36" y="1094" width="2430" height="54" rx="14" fill="#1e3a8a" stroke="#1e3a8a" stroke-width="1.2" opacity="1"/>
+<text x="1251.0" y="1129" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" fill="#ffffff" text-anchor="middle">P8 — Cross-cutting System Evidence (Not a timeline phase)</text>
+<rect x="54.0" y="1168" width="390.0" height="226" rx="12" fill="#ffffff" stroke="#60a5fa" stroke-width="1.4" opacity="1"/>
+<text x="249.0" y="1198" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#1e3a8a" text-anchor="middle">CPU scheduling and</text>
+<text x="249.0" y="1215" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#1e3a8a" text-anchor="middle">runnable latency</text>
+<text x="70.0" y="1234" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• critical thread runnable</text>
+<text x="70.0" y="1250" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">latency</text>
+<text x="70.0" y="1266" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• runnable thread -&gt; CPU</text>
+<text x="70.0" y="1282" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">blocker</text>
+<text x="70.0" y="1298" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• IRQ / softirq / kworker</text>
+<text x="70.0" y="1314" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">pressure</text>
+<text x="70.0" y="1330" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• CPU frequency / DVFS</text>
+<text x="70.0" y="1346" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• thermal / power cap</text>
+<rect x="462.0" y="1168" width="390.0" height="226" rx="12" fill="#ffffff" stroke="#60a5fa" stroke-width="1.4" opacity="1"/>
+<text x="657.0" y="1198" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#1e3a8a" text-anchor="middle">Binder / lock dependency</text>
+<text x="478.0" y="1234" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• Binder client -&gt; server</text>
+<text x="478.0" y="1250" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• Binder thread-pool</text>
+<text x="478.0" y="1266" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">saturation</text>
+<text x="478.0" y="1282" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• waiter -&gt; lock owner</text>
+<text x="478.0" y="1298" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• monitor / futex contention</text>
+<rect x="870.0" y="1168" width="390.0" height="226" rx="12" fill="#ffffff" stroke="#60a5fa" stroke-width="1.4" opacity="1"/>
+<text x="1065.0" y="1198" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#1e3a8a" text-anchor="middle">I/O, page fault and</text>
+<text x="1065.0" y="1215" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#1e3a8a" text-anchor="middle">storage</text>
+<text x="886.0" y="1234" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• file-backed page fault</text>
+<text x="886.0" y="1250" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• block device queue/service</text>
+<text x="886.0" y="1266" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">latency</text>
+<text x="886.0" y="1282" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• filesystem / inode /</text>
+<text x="886.0" y="1298" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">page-cache lock</text>
+<text x="886.0" y="1314" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• background I/O contention</text>
+<rect x="1278.0" y="1168" width="390.0" height="226" rx="12" fill="#ffffff" stroke="#60a5fa" stroke-width="1.4" opacity="1"/>
+<text x="1473.0" y="1198" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#1e3a8a" text-anchor="middle">Memory, GC and reclaim</text>
+<text x="1294.0" y="1234" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• WaitForGcToComplete</text>
+<text x="1294.0" y="1250" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• STW GC pause</text>
+<text x="1294.0" y="1266" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• allocation stall</text>
+<text x="1294.0" y="1282" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• direct reclaim</text>
+<text x="1294.0" y="1298" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• kswapd competition</text>
+<text x="1294.0" y="1314" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• compaction stall</text>
+<text x="1294.0" y="1330" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• zram / swap</text>
+<text x="1294.0" y="1346" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• lmkd / process restart</text>
+<text x="1294.0" y="1362" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• GC overlap only</text>
+<rect x="1686.0" y="1168" width="390.0" height="226" rx="12" fill="#ffffff" stroke="#60a5fa" stroke-width="1.4" opacity="1"/>
+<text x="1881.0" y="1198" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#1e3a8a" text-anchor="middle">System render/GPU</text>
+<text x="1881.0" y="1215" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#1e3a8a" text-anchor="middle">evidence</text>
+<text x="1702.0" y="1234" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• RenderThread runnable</text>
+<text x="1702.0" y="1250" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">latency</text>
+<text x="1702.0" y="1266" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• SurfaceFlinger delay</text>
+<text x="1702.0" y="1282" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• GPU / fence wait</text>
+<text x="1702.0" y="1298" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• HWC present delay</text>
+<rect x="2094.0" y="1168" width="390.0" height="226" rx="12" fill="#ffffff" stroke="#60a5fa" stroke-width="1.4" opacity="1"/>
+<text x="2289.0" y="1198" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#1e3a8a" text-anchor="middle">Test environment /</text>
+<text x="2289.0" y="1215" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#1e3a8a" text-anchor="middle">config difference</text>
+<text x="2110.0" y="1234" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• Perfetto / logging overhead</text>
+<text x="2110.0" y="1250" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• package state / cache</text>
+<text x="2110.0" y="1266" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">difference</text>
+<text x="2110.0" y="1282" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• display refresh-rate</text>
+<text x="2110.0" y="1298" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">difference</text>
+<text x="2110.0" y="1314" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">• automation timing difference</text>
+<rect x="36" y="1462" width="2430" height="88" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.3" opacity="1"/>
+<text x="62" y="1500" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="start">Legend</text>
+<circle cx="216" cy="1484" r="7" fill="#2563eb"/>
+<text x="234" y="1488" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start">P1–P7 = canonical app-entry timeline phases</text>
+<circle cx="216" cy="1506" r="7" fill="#7c3aed"/>
+<text x="234" y="1510" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start">P8 = explains why a P1–P7 node/leaf is worse than REF</text>
+<circle cx="216" cy="1528" r="7" fill="#16a34a"/>
+<text x="234" y="1532" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start">Cold/Warm notes are role mappings, not extra phases</text>
+</svg>

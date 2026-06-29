@@ -1,0 +1,56 @@
+schema_version: "7.0"
+semantics: "Canonical app-entry timeline phases. P8 is cross-cutting evidence only and must not be added as a sequential phase."
+P1:
+  name: Touch Duration
+  role: canonical_timeline_phase
+  start: touch down / first launch input marker
+  end: touch up / launch request handoff marker
+P2:
+  name: Launch Preparation
+  role: canonical_timeline_phase
+  start: launch request enters launcher/system_server path
+  end: cold=max(P2-1 system_server+launcher workflow, P2-2 process launch readiness); warm=P2 system_server+launcher workflow done
+  branches:
+    P2-1: system_server + launcher workflow
+    P2-2: target app process launch (cold only)
+P3:
+  name: bindApplication / activityStart
+  cold_name: bindApplication
+  warm_name: activityStart
+  role: canonical_timeline_phase
+  start: cold=bindApplication start; warm=activityStart start
+  end: cold=bindApplication end; warm=activityStart end
+P4:
+  name: activityStart / activityResume
+  cold_name: activityStart
+  warm_name: activityResume
+  role: canonical_timeline_phase
+  start: cold=activityStart start; warm=activityResume start
+  end: cold=activityStart end; warm=activityResume end
+P5:
+  name: activityResume / first Choreographer#doFrame
+  cold_name: activityResume
+  warm_name: first Choreographer#doFrame
+  role: canonical_timeline_phase
+  start: cold=activityResume start; warm=first Choreographer#doFrame start
+  end: cold=activityResume end; warm=first Choreographer#doFrame end
+P6:
+  name: first Choreographer#doFrame / activityIdle
+  cold_name: first Choreographer#doFrame
+  warm_name: activityIdle
+  role: canonical_timeline_phase
+  start: cold=first Choreographer#doFrame start; warm=activityIdle start
+  end: cold=first Choreographer#doFrame end; warm=activityIdle end
+P7:
+  name: activityIdle
+  cold_name: activityIdle
+  warm_name: Not applicable
+  role: canonical_timeline_phase_cold_only
+  start: first frame completion / activityIdle client-server tail start
+  end: system_server IActivityClientController::activityIdle::server end
+P8:
+  name: Cross-cutting System Evidence
+  role: cross_cutting_evidence_not_timeline_phase
+  start: pre-launch evidence window
+  end: launch completion
+  note: "P8 explains why P1-P7 regress; never add P8 as a sequential launch phase."

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "evidence_graph.schema.json",
+  "type": "object",
+  "required": ["schema_version", "nodes", "edges", "final_leaf_count"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "label"],
+        "properties": {
+          "id": {"type": "string"},
+          "type": {"type": "string"},
+          "label": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "relation"]
+      }
+    },
+    "final_leaf_count": {"type": "integer", "minimum": 0}
+  },
+  "additionalProperties": true
+}

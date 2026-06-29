@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "analyzer_result.schema.json",
+  "type": "object",
+  "required": ["skill", "trace_label", "title", "category", "confidence"],
+  "properties": {
+    "finding_id": {"type": "string"},
+    "skill": {"type": "string"},
+    "trace_label": {"enum": ["DUT", "REF", "PAIR"]},
+    "title": {"type": "string"},
+    "category": {"type": "string"},
+    "severity": {"enum": ["INFO", "WARNING", "ERROR"]},
+    "confidence": {"enum": ["HIGH", "MEDIUM", "LOW"]},
+    "evidence": {"type": "array"}
+  },
+  "additionalProperties": true
+}

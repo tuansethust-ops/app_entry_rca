@@ -1,0 +1,21 @@
+name: render-frame-analysis
+version: 6.3.0
+stage: diagnostic
+entrypoint: skill.py
+documentation: SKILL.md
+requires:
+- phase-localizer
+optional_requires: []
+trigger: routed
+interface:
+  function: run(state, config)
+  state_model: app_entry_rca.core.models.AnalysisState
+produces:
+- traversal_ms
+- draw_frames_ms
+- vulkan_finish_ms
+- texture_upload_ms
+- gpu_wait_ms
+missing_evidence_policy: NOT_OBSERVABLE
+contract_version: '6.0'
+evidence_policy: evidence_first

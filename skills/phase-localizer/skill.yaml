@@ -1,0 +1,19 @@
+name: phase-localizer
+version: 6.3.0
+stage: localization
+entrypoint: skill.py
+documentation: SKILL.md
+requires:
+- trace-validation
+optional_requires: []
+trigger: always
+interface:
+  function: run(state, config)
+  state_model: app_entry_rca.core.models.AnalysisState
+produces:
+- phase_comparison
+- active_phases
+- activated_groups
+missing_evidence_policy: NOT_OBSERVABLE
+contract_version: '6.0'
+evidence_policy: evidence_first

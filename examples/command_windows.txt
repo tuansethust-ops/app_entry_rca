@@ -1,0 +1,5 @@
+python app_entry_rca.py ^
+  --dut D:\trace\DUT.perfetto ^
+  --ref D:\trace\REF.perfetto ^
+  --out D:\trace\app_entry_rca_out ^
+  --include-better-final

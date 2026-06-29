@@ -1,0 +1,117 @@
+p1.touch_duration.system_server_input_dispatch:
+- running-analysis
+- runnable-analysis
+- cpu-core-frequency-analysis
+- wait-dependency-analysis
+p1.touch_duration.launcher_input_handling:
+- running-analysis
+- runnable-analysis
+- cpu-core-frequency-analysis
+- wait-dependency-analysis
+- block-io-analysis
+p2.launch_preparation.system_server_launcher_workflow:
+- running-analysis
+- runnable-analysis
+- cpu-core-frequency-analysis
+- wait-dependency-analysis
+p2.launch_preparation.target_app_process_launch:
+- art-runtime-analysis
+- running-analysis
+- runnable-analysis
+- cpu-core-frequency-analysis
+- wait-dependency-analysis
+- block-io-analysis
+p3.bindapplication_activitystart.framework_bind_application:
+- art-runtime-analysis
+- running-analysis
+- runnable-analysis
+- cpu-core-frequency-analysis
+- wait-dependency-analysis
+- block-io-analysis
+- memory-gc-analysis
+p3.bindapplication_activitystart.app_creation_and_startup:
+- running-analysis
+- runnable-analysis
+- cpu-core-frequency-analysis
+- wait-dependency-analysis
+- memory-gc-analysis
+p3.bindapplication_activitystart.runtime_and_resource_bootstrap:
+- art-runtime-analysis
+- block-io-analysis
+- memory-gc-analysis
+p4.activitystart_activityresume.activity_lifecycle_start:
+- running-analysis
+- runnable-analysis
+- cpu-core-frequency-analysis
+- wait-dependency-analysis
+- memory-gc-analysis
+p4.activitystart_activityresume.activity_ui_creation:
+- art-runtime-analysis
+- block-io-analysis
+- memory-gc-analysis
+- running-analysis
+- runnable-analysis
+- cpu-core-frequency-analysis
+- wait-dependency-analysis
+p4.activitystart_activityresume.activitystart_handoff_and_scheduling:
+- running-analysis
+- runnable-analysis
+- cpu-core-frequency-analysis
+- wait-dependency-analysis
+p5.activityresume_first_choreographerdoframe.activity_resume_lifecycle:
+- running-analysis
+- runnable-analysis
+- cpu-core-frequency-analysis
+- wait-dependency-analysis
+- memory-gc-analysis
+p5.activityresume_first_choreographerdoframe.post_resume_app_work:
+- running-analysis
+- runnable-analysis
+- cpu-core-frequency-analysis
+- wait-dependency-analysis
+- block-io-analysis
+p6.first_choreographerdoframe_activityidle.frame_scheduling_and_vsync:
+- render-frame-analysis
+- running-analysis
+- runnable-analysis
+- cpu-core-frequency-analysis
+p6.first_choreographerdoframe_activityidle.view_traversal_and_draw:
+- render-frame-analysis
+- running-analysis
+- runnable-analysis
+- cpu-core-frequency-analysis
+- block-io-analysis
+p6.first_choreographerdoframe_activityidle.surface_and_renderthread:
+- render-frame-analysis
+- running-analysis
+- runnable-analysis
+- cpu-core-frequency-analysis
+p7.activityidle.activityidle_reporting:
+- render-frame-analysis
+- running-analysis
+- runnable-analysis
+- cpu-core-frequency-analysis
+- wait-dependency-analysis
+p7.activityidle.post_first_frame_tail:
+- render-frame-analysis
+- running-analysis
+- runnable-analysis
+- cpu-core-frequency-analysis
+- wait-dependency-analysis
+- block-io-analysis
+p8.cross_cutting_system_evidence.cpu_scheduling:
+- system-interference-analysis
+- runnable-analysis
+- cpu-core-frequency-analysis
+p8.cross_cutting_system_evidence.binder_lock_dependency:
+- wait-dependency-analysis
+p8.cross_cutting_system_evidence.io_page_fault_storage:
+- block-io-analysis
+p8.cross_cutting_system_evidence.memory_gc_reclaim:
+- memory-gc-analysis
+p8.cross_cutting_system_evidence.render_gpu_system:
+- render-frame-analysis
+- cpu-core-frequency-analysis
+p8.cross_cutting_system_evidence.test_environment_config:
+- system-interference-analysis
+- cpu-core-frequency-analysis

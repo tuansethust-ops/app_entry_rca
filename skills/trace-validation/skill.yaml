@@ -1,0 +1,18 @@
+name: trace-validation
+version: 6.3.0
+stage: validation
+entrypoint: skill.py
+documentation: SKILL.md
+requires:
+- launch-context
+optional_requires: []
+trigger: always
+interface:
+  function: run(state, config)
+  state_model: app_entry_rca.core.models.AnalysisState
+produces:
+- comparability_score
+- marker_matrix
+missing_evidence_policy: NOT_OBSERVABLE
+contract_version: '6.0'
+evidence_policy: evidence_first

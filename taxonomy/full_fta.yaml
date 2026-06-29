@@ -1,0 +1,866 @@
+schema_version: '1.0'
+taxonomy_version: app_entry_rca_v1_corrected_leaf_taxonomy
+summary:
+  phase_count: 8
+  candidate_group_count: 25
+  leaf_count: 151
+  automatic_rule_count: 41
+  automatic_rule_leaf_count: 41
+phases:
+- id: P1
+  name: Touch Duration
+  groups:
+  - id: p1.touch_duration.input_event_window
+    name: Input event window
+    leaves:
+    - id: p1.touch_duration.input_event_window.touch_down
+      name: touch down
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p1.touch_duration.input_event_window.touch_up
+      name: touch up
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p1.touch_duration.input_event_window.touch_down_to_touch_up
+      name: touch down -> touch up
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+  - id: p1.touch_duration.system_server_input_dispatch
+    name: system_server input dispatch
+    leaves:
+    - id: p1.touch_duration.system_server_input_dispatch.inputdispatcher_notify_motion
+      name: InputDispatcher::notifyMotion
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p1.touch_duration.system_server_input_dispatch.dispatch_motion_locked
+      name: dispatchMotionLocked
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p1.touch_duration.system_server_input_dispatch.find_touched_window_targets
+      name: findTouchedWindowTargets
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p1.touch_duration.system_server_input_dispatch.prepare_dispatch_cycle_locked
+      name: prepareDispatchCycleLocked
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p1.touch_duration.system_server_input_dispatch.enqueue_dispatch_entry_and_start_dispatch_cycle_locked
+      name: enqueueDispatchEntryAndStartDispatchCycleLocked
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p1.touch_duration.system_server_input_dispatch.start_dispatch_cycle_locked
+      name: startDispatchCycleLocked
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p1.touch_duration.system_server_input_dispatch.publish_motion_event_down
+      name: publishMotionEvent(action=DOWN)
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p1.touch_duration.system_server_input_dispatch.publish_motion_event_up
+      name: publishMotionEvent(action=UP)
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+  - id: p1.touch_duration.launcher_input_handling
+    name: Launcher input handling
+    leaves:
+    - id: p1.touch_duration.launcher_input_handling.deliver_input_event
+      name: deliverInputEvent
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p1.touch_duration.launcher_input_handling.launcher_click_handler
+      name: Launcher click handler
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p1.touch_duration.launcher_input_handling.active_launch
+      name: ActiveLaunch
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p1.touch_duration.launcher_input_handling.launcher_start_activity
+      name: launcher startActivity
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+- id: P2
+  name: Launch Preparation
+  groups:
+  - id: p2.launch_preparation.system_server_launcher_workflow
+    name: P2-1 system_server + launcher workflow
+    leaves:
+    - id: p2.launch_preparation.system_server_launcher_workflow.start_activity
+      name: startActivity
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p2.launch_preparation.system_server_launcher_workflow.iatms_startactivity_server
+      name: IActivityTaskManager::startActivity server side
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p2.launch_preparation.system_server_launcher_workflow.should_abort_background_activity_start
+      name: shouldAbortBackgroundActivityStart
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p2.launch_preparation.system_server_launcher_workflow.start_activity_inner
+      name: startActivityInner
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p2.launch_preparation.system_server_launcher_workflow.activity_pause
+      name: activityPause
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p2.launch_preparation.system_server_launcher_workflow.perform_pause
+      name: performPause
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p2.launch_preparation.system_server_launcher_workflow.launcher_on_pause
+      name: Launcher onPause
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p2.launch_preparation.system_server_launcher_workflow.wms_transition_setup
+      name: WMS / transition setup
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p2.launch_preparation.system_server_launcher_workflow.client_transaction_construction
+      name: ClientTransaction construction
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p2.launch_preparation.system_server_launcher_workflow.lifecycle_transaction_delivery
+      name: lifecycle transaction delivery
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+  - id: p2.launch_preparation.target_app_process_launch
+    name: P2-2 target app process launch
+    leaves:
+    - id: p2.launch_preparation.target_app_process_launch.process_start_request
+      name: process start request
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p2.launch_preparation.target_app_process_launch.start_proc
+      name: Start proc
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p2.launch_preparation.target_app_process_launch.zygote_fork
+      name: process fork
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p2.launch_preparation.target_app_process_launch.post_fork
+      name: PostFork
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p2.launch_preparation.target_app_process_launch.zygote_init
+      name: ZygoteInit
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p2.launch_preparation.target_app_process_launch.activity_thread_main
+      name: ActivityThreadMain
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p2.launch_preparation.target_app_process_launch.app_process_scheduling
+      name: app process scheduling
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p2.launch_preparation.target_app_process_launch.activity_thread_attach
+      name: ActivityThread.attach
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+- id: P3
+  name: bindApplication / activityStart
+  groups:
+  - id: p3.bindapplication_activitystart.framework_bind_application
+    name: Framework bindApplication dispatch
+    leaves:
+    - id: p3.bindapplication_activitystart.framework_bind_application.iapplicationthread_bindapplication_server
+      name: IApplicationThread::bindApplication server side
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p3.bindapplication_activitystart.framework_bind_application.bind_application
+      name: bindApplication
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p3.bindapplication_activitystart.framework_bind_application.handle_bind_application
+      name: ActivityThread handleBindApplication
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p3.bindapplication_activitystart.framework_bind_application.resources_apply_configuration
+      name: ResourcesManager#applyConfigurationToResources
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p3.bindapplication_activitystart.framework_bind_application.classloader_namespace
+      name: createClassloaderNamespace
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p3.bindapplication_activitystart.framework_bind_application.setup_graphics_support
+      name: setupGraphicsSupport
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p3.bindapplication_activitystart.framework_bind_application.setup_proxies
+      name: Setup proxies
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+  - id: p3.bindapplication_activitystart.app_creation_and_startup
+    name: Application creation and startup
+    leaves:
+    - id: p3.bindapplication_activitystart.app_creation_and_startup.make_application
+      name: makeApplication
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p3.bindapplication_activitystart.app_creation_and_startup.application_attach
+      name: Application attach
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p3.bindapplication_activitystart.app_creation_and_startup.application_oncreate
+      name: Application onCreate
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p3.bindapplication_activitystart.app_creation_and_startup.app_startup
+      name: app Startup
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+  - id: p3.bindapplication_activitystart.runtime_and_resource_bootstrap
+    name: Runtime/resource bootstrap during bindApplication
+    leaves:
+    - id: p3.bindapplication_activitystart.runtime_and_resource_bootstrap.open_dex_files_from_oat
+      name: OpenDexFilesFromOat
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p3.bindapplication_activitystart.runtime_and_resource_bootstrap.appimage_loading
+      name: AppImage:Loading
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p3.bindapplication_activitystart.runtime_and_resource_bootstrap.class_loading_dex_resource_loading
+      name: class loading / dex / resource loading
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p3.bindapplication_activitystart.runtime_and_resource_bootstrap.load_apk_assets
+      name: LoadApkAssets / ApkAssets
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p3.bindapplication_activitystart.runtime_and_resource_bootstrap.loaded_arsc
+      name: LoadedArsc / LoadedPackage parsing
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p3.bindapplication_activitystart.runtime_and_resource_bootstrap.native_linker_dlopen
+      name: native linker / dlopen / JNI_OnLoad
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+- id: P4
+  name: activityStart / activityResume
+  groups:
+  - id: p4.activitystart_activityresume.activity_lifecycle_start
+    name: Activity start lifecycle
+    leaves:
+    - id: p4.activitystart_activityresume.activity_lifecycle_start.activity_start
+      name: activityStart
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p4.activitystart_activityresume.activity_lifecycle_start.lifecycle_transaction
+      name: lifecycle transaction
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p4.activitystart_activityresume.activity_lifecycle_start.perform_launch_activity
+      name: performLaunchActivity
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p4.activitystart_activityresume.activity_lifecycle_start.perform_create
+      name: performCreate:<Activity>
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p4.activitystart_activityresume.activity_lifecycle_start.activity_attach
+      name: Activity attach
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p4.activitystart_activityresume.activity_lifecycle_start.activity_oncreate
+      name: Activity onCreate
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p4.activitystart_activityresume.activity_lifecycle_start.app_handle_start
+      name: APP_handleStart
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p4.activitystart_activityresume.activity_lifecycle_start.saved_state_restore
+      name: saved-state restore
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+  - id: p4.activitystart_activityresume.activity_ui_creation
+    name: Activity UI/resource creation
+    leaves:
+    - id: p4.activitystart_activityresume.activity_ui_creation.inflate
+      name: inflate
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p4.activitystart_activityresume.activity_ui_creation.init_manager
+      name: initManager
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p4.activitystart_activityresume.activity_ui_creation.create_base_activity_resources
+      name: ResourcesManager#createBaseActivityResources
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p4.activitystart_activityresume.activity_ui_creation.theme_apply_style
+      name: Theme::ApplyStyle
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p4.activitystart_activityresume.activity_ui_creation.assetmanager_open_xml_asset
+      name: AssetManager::OpenXmlAsset
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p4.activitystart_activityresume.activity_ui_creation.view_creation
+      name: view creation
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p4.activitystart_activityresume.activity_ui_creation.fragment_or_compose_construction
+      name: Fragment / Compose construction
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p4.activitystart_activityresume.activity_ui_creation.first_visible_content_setup
+      name: first visible content setup
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+  - id: p4.activitystart_activityresume.activitystart_handoff_and_scheduling
+    name: activityStart handoff and scheduling
+    leaves:
+    - id: p4.activitystart_activityresume.activitystart_handoff_and_scheduling.activitystart_gate_gap
+      name: activityStart gate gap
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p4.activitystart_activityresume.activitystart_handoff_and_scheduling.app_main_thread_scheduling
+      name: app main thread scheduling
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p4.activitystart_activityresume.activitystart_handoff_and_scheduling.binder_or_lock_wait_before_oncreate
+      name: binder / lock wait before onCreate
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+- id: P5
+  name: activityResume / first Choreographer#doFrame
+  groups:
+  - id: p5.activityresume_first_choreographerdoframe.activity_resume_lifecycle
+    name: Activity resume lifecycle
+    leaves:
+    - id: p5.activityresume_first_choreographerdoframe.activity_resume_lifecycle.activity_resume
+      name: activityResume
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p5.activityresume_first_choreographerdoframe.activity_resume_lifecycle.perform_resume
+      name: performResume:<Activity>
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p5.activityresume_first_choreographerdoframe.activity_resume_lifecycle.activity_onresume
+      name: Activity onResume
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p5.activityresume_first_choreographerdoframe.activity_resume_lifecycle.lifecycle_callback
+      name: lifecycle callback
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p5.activityresume_first_choreographerdoframe.activity_resume_lifecycle.activity_resumed_server
+      name: IActivityClientController::activityResumed server side
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+  - id: p5.activityresume_first_choreographerdoframe.post_resume_app_work
+    name: Post-resume app work
+    leaves:
+    - id: p5.activityresume_first_choreographerdoframe.post_resume_app_work.main_thread_work_after_resume
+      name: app main thread work after resume
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p5.activityresume_first_choreographerdoframe.post_resume_app_work.binder_io_lock_in_onresume
+      name: binder / I/O / lock contention in onResume
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p5.activityresume_first_choreographerdoframe.post_resume_app_work.observer_or_callback_dispatch
+      name: observer / callback dispatch
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p5.activityresume_first_choreographerdoframe.post_resume_app_work.first_frame_request_from_resume
+      name: first frame request from resume
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+- id: P6
+  name: first Choreographer#doFrame / activityIdle
+  groups:
+  - id: p6.first_choreographerdoframe_activityidle.frame_scheduling_and_vsync
+    name: Frame scheduling and VSync
+    leaves:
+    - id: p6.first_choreographerdoframe_activityidle.frame_scheduling_and_vsync.first_choreographer_doframe
+      name: Choreographer#doFrame
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p6.first_choreographerdoframe_activityidle.frame_scheduling_and_vsync.schedule_traversals
+      name: scheduleTraversals
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p6.first_choreographerdoframe_activityidle.frame_scheduling_and_vsync.vsync_callback
+      name: VSync callback
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p6.first_choreographerdoframe_activityidle.frame_scheduling_and_vsync.main_looper_backlog
+      name: main Looper / message backlog
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p6.first_choreographerdoframe_activityidle.frame_scheduling_and_vsync.missed_vsync_before_traversal
+      name: missed VSync before traversal
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+  - id: p6.first_choreographerdoframe_activityidle.view_traversal_and_draw
+    name: View traversal and draw
+    leaves:
+    - id: p6.first_choreographerdoframe_activityidle.view_traversal_and_draw.traversal
+      name: traversal
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p6.first_choreographerdoframe_activityidle.view_traversal_and_draw.measure
+      name: measure
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p6.first_choreographerdoframe_activityidle.view_traversal_and_draw.layout
+      name: layout
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p6.first_choreographerdoframe_activityidle.view_traversal_and_draw.draw
+      name: draw
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p6.first_choreographerdoframe_activityidle.view_traversal_and_draw.draw_vri
+      name: draw-VRI
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p6.first_choreographerdoframe_activityidle.view_traversal_and_draw.record_view_draw
+      name: Record View#draw
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p6.first_choreographerdoframe_activityidle.view_traversal_and_draw.relayoutwindow_first_true
+      name: relayoutWindow#first=true
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p6.first_choreographerdoframe_activityidle.view_traversal_and_draw.repeated_measure_or_layout
+      name: repeated measure/layout pass
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+  - id: p6.first_choreographerdoframe_activityidle.surface_and_renderthread
+    name: Surface / RenderThread / GPU path
+    leaves:
+    - id: p6.first_choreographerdoframe_activityidle.surface_and_renderthread.create_surface_control
+      name: createSurfaceControl
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p6.first_choreographerdoframe_activityidle.surface_and_renderthread.isurfacecomposerclient_create_surface
+      name: ISurfaceComposerClient::createSurface
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p6.first_choreographerdoframe_activityidle.surface_and_renderthread.renderthread_drawframes
+      name: RenderThread DrawFrames
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p6.first_choreographerdoframe_activityidle.surface_and_renderthread.sync_and_draw_frame
+      name: SyncAndDrawFrame
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p6.first_choreographerdoframe_activityidle.surface_and_renderthread.vulkan_finish_frame
+      name: Vulkan finish frame
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p6.first_choreographerdoframe_activityidle.surface_and_renderthread.texture_or_glyph_upload
+      name: texture / glyph upload
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p6.first_choreographerdoframe_activityidle.surface_and_renderthread.buffer_allocate_or_dequeue
+      name: GraphicBuffer allocate / dequeueBuffer
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p6.first_choreographerdoframe_activityidle.surface_and_renderthread.surfaceflinger_hwc
+      name: SurfaceFlinger / HWC
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p6.first_choreographerdoframe_activityidle.surface_and_renderthread.gpu_fence_wait
+      name: GPU / fence wait
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p6.first_choreographerdoframe_activityidle.surface_and_renderthread.frame_or_vsync
+      name: frame / vsync
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+- id: P7
+  name: activityIdle
+  groups:
+  - id: p7.activityidle.activityidle_reporting
+    name: activityIdle reporting
+    leaves:
+    - id: p7.activityidle.activityidle_reporting.activity_idle
+      name: activityIdle
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p7.activityidle.activityidle_reporting.activity_idle_client
+      name: activityIdle client
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p7.activityidle.activityidle_reporting.activity_idle_binder_delivery
+      name: client-to-system_server activityIdle Binder delivery
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p7.activityidle.activityidle_reporting.activity_idle_server
+      name: IActivityClientController::activityIdle server side
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p7.activityidle.activityidle_reporting.system_server_idle_reporting
+      name: system_server idle reporting
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p7.activityidle.activityidle_reporting.activitytaskmanager_state_transition
+      name: ActivityTaskManager state transition
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p7.activityidle.activityidle_reporting.window_surface_placer
+      name: WindowSurfacePlacer
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p7.activityidle.activityidle_reporting.window_animator
+      name: WindowAnimator
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p7.activityidle.activityidle_reporting.activity_idle_monitor_contention
+      name: system_server activityIdle monitor / lock contention
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+  - id: p7.activityidle.post_first_frame_tail
+    name: Post-first-frame tail
+    leaves:
+    - id: p7.activityidle.post_first_frame_tail.post_first_frame_tail_to_activityidle
+      name: post-first-frame tail to activityIdle
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p7.activityidle.post_first_frame_tail.repeated_choreographer_doframe
+      name: repeated Choreographer#doFrame
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p7.activityidle.post_first_frame_tail.recyclerview_onlayout
+      name: RecyclerView OnLayout
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p7.activityidle.post_first_frame_tail.recyclerview_onbindview
+      name: RecyclerView OnBindView
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p7.activityidle.post_first_frame_tail.adapter_or_list_update
+      name: adapter / list update
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p7.activityidle.post_first_frame_tail.vectordrawable_repaint
+      name: VectorDrawable repaint
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p7.activityidle.post_first_frame_tail.idlehandler_or_messagequeue_work
+      name: IdleHandler / MessageQueue work
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p7.activityidle.post_first_frame_tail.reportfullydrawn_or_custom_ready
+      name: reportFullyDrawn / custom-ready delay
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+  - id: p7.activityidle.measurement_endpoint_validation
+    name: Measurement endpoint validation
+    leaves:
+    - id: p7.activityidle.measurement_endpoint_validation.first_frame_vs_activityidle_endpoint
+      name: first frame vs activityIdle endpoint
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p7.activityidle.measurement_endpoint_validation.wrong_activity_marker
+      name: marker belongs to wrong Activity
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p7.activityidle.measurement_endpoint_validation.different_dut_ref_endpoint_policy
+      name: different DUT/REF endpoint policy
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+- id: P8
+  name: Cross-cutting System Evidence
+  groups:
+  - id: p8.cross_cutting_system_evidence.cpu_scheduling
+    name: CPU scheduling and runnable latency
+    leaves:
+    - id: p8.cross_cutting_system_evidence.cpu_scheduling.critical_runnable_latency
+      name: critical thread runnable latency
+      default_status: NOT_OBSERVABLE
+      required_evidence:
+      - sched_switch
+      - sched_wakeup
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.cpu_scheduling.same_cpu_blocker
+      name: runnable thread -> CPU blocker
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.cpu_scheduling.irq_softirq_kworker_pressure
+      name: IRQ / softirq / kworker pressure
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.cpu_scheduling.cpu_frequency_or_dvfs
+      name: CPU frequency / DVFS
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.cpu_scheduling.thermal_or_power_cap
+      name: thermal / power cap
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+  - id: p8.cross_cutting_system_evidence.binder_lock_dependency
+    name: Binder / lock dependency
+    leaves:
+    - id: p8.cross_cutting_system_evidence.binder_lock_dependency.binder_client_to_server
+      name: Binder client -> server
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.binder_lock_dependency.binder_thread_pool_saturation
+      name: Binder thread-pool saturation
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.binder_lock_dependency.waiter_to_lock_owner
+      name: waiter -> lock owner
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.binder_lock_dependency.monitor_or_futex_contention
+      name: monitor / futex contention
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+  - id: p8.cross_cutting_system_evidence.io_page_fault_storage
+    name: I/O, page fault and storage
+    leaves:
+    - id: p8.cross_cutting_system_evidence.io_page_fault_storage.file_backed_page_fault
+      name: file-backed page fault
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.io_page_fault_storage.block_device_latency
+      name: block device queue/service latency
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.io_page_fault_storage.filesystem_or_page_lock
+      name: filesystem / inode / page-cache lock
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.io_page_fault_storage.background_io_contention
+      name: background I/O contention
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+  - id: p8.cross_cutting_system_evidence.memory_gc_reclaim
+    name: Memory, GC and reclaim
+    leaves:
+    - id: p8.cross_cutting_system_evidence.memory_gc_reclaim.wait_for_gc_to_complete
+      name: WaitForGcToComplete
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.memory_gc_reclaim.stw_gc_pause
+      name: STW GC pause
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.memory_gc_reclaim.allocation_stall
+      name: allocation stall
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.memory_gc_reclaim.direct_reclaim
+      name: direct reclaim
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.memory_gc_reclaim.kswapd_competition
+      name: kswapd competition
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.memory_gc_reclaim.compaction_stall
+      name: compaction stall
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.memory_gc_reclaim.zram_or_swap
+      name: zram / swap
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.memory_gc_reclaim.lmkd_or_process_restart
+      name: lmkd / process restart
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.memory_gc_reclaim.gc_overlap_only
+      name: GC overlap only
+      default_status: NOT_OBSERVABLE
+      required_evidence:
+      - absence of direct blocking evidence
+      notes: ''
+  - id: p8.cross_cutting_system_evidence.render_gpu_system
+    name: System render/GPU evidence
+    leaves:
+    - id: p8.cross_cutting_system_evidence.render_gpu_system.renderthread_runnable_latency
+      name: RenderThread runnable latency
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.render_gpu_system.surfaceflinger_delay
+      name: SurfaceFlinger delay
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.render_gpu_system.gpu_fence_wait
+      name: GPU / fence wait
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.render_gpu_system.hwc_present_delay
+      name: HWC present delay
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+  - id: p8.cross_cutting_system_evidence.test_environment_config
+    name: Test environment / config difference
+    leaves:
+    - id: p8.cross_cutting_system_evidence.test_environment_config.trace_overhead
+      name: Perfetto / logging overhead
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.test_environment_config.package_state_or_cache_difference
+      name: package state / cache difference
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.test_environment_config.display_refresh_rate_difference
+      name: display refresh-rate difference
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''
+    - id: p8.cross_cutting_system_evidence.test_environment_config.automation_timing_difference
+      name: automation timing difference
+      default_status: NOT_OBSERVABLE
+      required_evidence: []
+      notes: ''

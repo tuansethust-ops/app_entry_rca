@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1900" viewBox="0 0 1600 1900">
+
+<defs>
+  <marker id="arrow2" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L8,3 z" fill="#334155" />
+  </marker>
+  <linearGradient id="blueGrad" x1="0" x2="1">
+    <stop offset="0%" stop-color="#0f172a"/>
+    <stop offset="100%" stop-color="#1e40af"/>
+  </linearGradient>
+</defs>
+
+<rect x="0" y="0" width="1600" height="1900" rx="0" fill="#ffffff" stroke="#ffffff" stroke-width="0" opacity="1"/>
+<text x="800.0" y="56" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="800" fill="#0f2a4d" text-anchor="middle">app_entry_rca Flowchart</text>
+<text x="800.0" y="88" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="500" fill="#475569" text-anchor="middle">Runtime pipeline: DUT/REF traces → FTA mapping → evidence correlation → RCA candidate</text>
+<rect x="70" y="130" width="640" height="1510" rx="18" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4" opacity="1"/>
+<rect x="70" y="130" width="640" height="54" rx="18" fill="#0f766e" stroke="#0f766e" stroke-width="1.2" opacity="1"/>
+<text x="390.0" y="165" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" fill="#ffffff" text-anchor="middle">RCA Engine Modules</text>
+<rect x="98" y="210" width="584" height="134" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.1" opacity="1"/>
+<text x="118" y="242" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="start">Entry Timeline Model</text>
+<text x="132" y="272" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• Cold Entry FTA</text>
+<text x="132" y="292" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• Warm Entry FTA</text>
+<text x="132" y="312" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• Canonical P1–P7 phases</text>
+<rect x="98" y="364" width="584" height="114" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.1" opacity="1"/>
+<text x="118" y="396" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="start">Master Leaf Taxonomy</text>
+<text x="132" y="426" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• Current corrected leaf nodes</text>
+<text x="132" y="446" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• P8 as evidence layer only</text>
+<rect x="98" y="498" width="584" height="154" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.1" opacity="1"/>
+<text x="118" y="530" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="start">DUT/REF Differential Analyzer</text>
+<text x="132" y="560" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• phase delta</text>
+<text x="132" y="580" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• leaf delta</text>
+<text x="132" y="600" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• gap delta</text>
+<text x="132" y="620" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• critical path contribution</text>
+<rect x="98" y="672" width="584" height="194" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.1" opacity="1"/>
+<text x="118" y="704" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="start">Evidence State Analyzer</text>
+<text x="132" y="734" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• Running / more work</text>
+<text x="132" y="754" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• Runnable / scheduling</text>
+<text x="132" y="774" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• Sleeping / Binder / lock</text>
+<text x="132" y="794" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• D-state / I/O</text>
+<text x="132" y="814" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• GC / reclaim / kswapd</text>
+<text x="132" y="834" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• Render / GPU / fence</text>
+<rect x="98" y="886" width="584" height="174" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.1" opacity="1"/>
+<text x="118" y="918" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="start">Evidence Chain Resolver</text>
+<text x="132" y="948" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• Binder client → server</text>
+<text x="132" y="968" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• waiter → lock owner</text>
+<text x="132" y="988" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• fault → file/page</text>
+<text x="132" y="1008" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• RenderThread → GPU/fence</text>
+<text x="132" y="1028" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• runnable thread → CPU blocker</text>
+<rect x="98" y="1080" width="584" height="154" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.1" opacity="1"/>
+<text x="118" y="1112" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="start">Hypothesis Ranking</text>
+<text x="132" y="1142" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• delta contribution</text>
+<text x="132" y="1162" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• critical path weight</text>
+<text x="132" y="1182" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• evidence confidence</text>
+<text x="132" y="1202" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• contradiction check</text>
+<rect x="98" y="1254" width="584" height="214" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.1" opacity="1"/>
+<text x="118" y="1286" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="start">RCA Verdict</text>
+<text x="132" y="1316" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• Symptom</text>
+<text x="132" y="1336" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• Location</text>
+<text x="132" y="1356" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• Mechanism</text>
+<text x="132" y="1376" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• Origin</text>
+<text x="132" y="1396" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• Ownership</text>
+<text x="132" y="1416" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• Action</text>
+<text x="132" y="1436" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#334155" text-anchor="start">• Verification</text>
+<rect x="760" y="130" width="770" height="1510" rx="18" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4" opacity="1"/>
+<rect x="760" y="130" width="770" height="54" rx="18" fill="#1e40af" stroke="#1e40af" stroke-width="1.2" opacity="1"/>
+<text x="1145" y="165" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" fill="#ffffff" text-anchor="middle">Operational RCA Workflow</text>
+<rect x="850" y="215" width="590" height="58" rx="13" fill="#ffffff" stroke="#60a5fa" stroke-width="1.4" opacity="1"/>
+<text x="1145.0" y="247" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="middle">Regression detected</text>
+<line x1="1145.0" y1="273" x2="1145.0" y2="305" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow2)"/>
+<rect x="850" y="315" width="590" height="78" rx="13" fill="#ffffff" stroke="#60a5fa" stroke-width="1.4" opacity="1"/>
+<text x="1145.0" y="347" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="middle">Entry classification</text>
+<text x="1145.0" y="371" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="500" fill="#475569" text-anchor="middle">Cold or Warm</text>
+<line x1="1145.0" y1="393" x2="1145.0" y2="425" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow2)"/>
+<rect x="850" y="435" width="590" height="78" rx="13" fill="#ffffff" stroke="#60a5fa" stroke-width="1.4" opacity="1"/>
+<text x="1145.0" y="467" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="middle">Apply FTA</text>
+<text x="1145.0" y="491" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="500" fill="#475569" text-anchor="middle">Select candidate phases / leaf nodes</text>
+<line x1="1145.0" y1="513" x2="1145.0" y2="545" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow2)"/>
+<rect x="850" y="555" width="590" height="78" rx="13" fill="#ffffff" stroke="#60a5fa" stroke-width="1.4" opacity="1"/>
+<text x="1145.0" y="587" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="middle">DUT vs REF Differential Analysis</text>
+<text x="1145.0" y="611" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="500" fill="#475569" text-anchor="middle">phase delta • leaf delta • gap delta</text>
+<line x1="1145.0" y1="633" x2="1145.0" y2="665" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow2)"/>
+<rect x="850" y="675" width="590" height="98" rx="13" fill="#ffffff" stroke="#60a5fa" stroke-width="1.4" opacity="1"/>
+<text x="1145.0" y="707" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="middle">Critical Path Analysis</text>
+<text x="1145.0" y="731" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="500" fill="#475569" text-anchor="middle">Cold: gate = max(P2-1 end, P3 end)</text>
+<text x="1145.0" y="751" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="500" fill="#475569" text-anchor="middle">Warm: gate = P2 end</text>
+<line x1="1145.0" y1="773" x2="1145.0" y2="805" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow2)"/>
+<rect x="850" y="815" width="590" height="98" rx="13" fill="#ffffff" stroke="#60a5fa" stroke-width="1.4" opacity="1"/>
+<text x="1145.0" y="847" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="middle">Evidence Collection</text>
+<text x="1145.0" y="871" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="500" fill="#475569" text-anchor="middle">CPU scheduling • binder • lock • I/O</text>
+<text x="1145.0" y="891" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="500" fill="#475569" text-anchor="middle">memory • GC • render/GPU</text>
+<line x1="1145.0" y1="913" x2="1145.0" y2="945" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow2)"/>
+<rect x="850" y="955" width="590" height="58" rx="13" fill="#ffffff" stroke="#60a5fa" stroke-width="1.4" opacity="1"/>
+<text x="1145.0" y="987" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="middle">Evidence Correlation &amp; Chain Resolution</text>
+<line x1="1145.0" y1="1013" x2="1145.0" y2="1045" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow2)"/>
+<rect x="850" y="1055" width="590" height="98" rx="13" fill="#ffffff" stroke="#60a5fa" stroke-width="1.4" opacity="1"/>
+<text x="1145.0" y="1087" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="middle">Branch Pruning / Source-Config Validation</text>
+<text x="1145.0" y="1111" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="500" fill="#475569" text-anchor="middle">target, entry, endpoint, trace capability</text>
+<text x="1145.0" y="1131" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="500" fill="#475569" text-anchor="middle">app/build version is diagnostic only</text>
+<line x1="1145.0" y1="1153" x2="1145.0" y2="1185" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow2)"/>
+<rect x="850" y="1195" width="590" height="58" rx="13" fill="#ffffff" stroke="#60a5fa" stroke-width="1.4" opacity="1"/>
+<text x="1145.0" y="1227" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="middle">Hypothesis Generation &amp; Ranking</text>
+<line x1="1145.0" y1="1253" x2="1145.0" y2="1285" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow2)"/>
+<rect x="850" y="1295" width="590" height="58" rx="13" fill="#ffffff" stroke="#60a5fa" stroke-width="1.4" opacity="1"/>
+<text x="1145.0" y="1327" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="middle">Experiment / Fix Verification</text>
+<line x1="1145.0" y1="1353" x2="1145.0" y2="1385" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow2)"/>
+<rect x="850" y="1395" width="590" height="58" rx="13" fill="#ecfdf5" stroke="#16a34a" stroke-width="1.4" opacity="1"/>
+<text x="1145.0" y="1427" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="middle">RCA candidate / Confirmed RCA</text>
+<rect x="90" y="1670" width="1420" height="100" rx="14" fill="#fff7ed" stroke="#f97316" stroke-width="1.5" opacity="1"/>
+<text x="120" y="1704" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20" font-weight="800" fill="#9a3412" text-anchor="start">Key Rules</text>
+<text x="310" y="1702" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start">• P1–P7 are canonical app-entry timeline phases.</text>
+<text x="310" y="1725" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start">• P8 explains why a phase/leaf became worse than REF.</text>
+<text x="310" y="1748" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start">• Never treat P8 as a sequential launch phase.</text>
+<text x="800.0" y="1835" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="600" fill="#334155" text-anchor="middle">Goal: identify whether regression is driven by System, Framework, or Application factors.</text>
+</svg>

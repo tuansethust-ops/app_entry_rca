@@ -1,0 +1,20 @@
+name: memory-gc-analysis
+version: 6.3.0
+stage: diagnostic
+entrypoint: skill.py
+documentation: SKILL.md
+requires:
+- phase-localizer
+optional_requires: []
+trigger: routed
+interface:
+  function: run(state, config)
+  state_model: app_entry_rca.core.models.AnalysisState
+produces:
+- wait_for_gc_ms
+- gc_competition_cpu_ms
+- gc_overlap_ms
+- target_direct_reclaim_ms
+missing_evidence_policy: NOT_OBSERVABLE
+contract_version: '6.0'
+evidence_policy: evidence_first

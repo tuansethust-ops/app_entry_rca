@@ -1,0 +1,19 @@
+name: evidence-graph-ranking
+version: 6.3.0
+stage: ranking
+entrypoint: skill.py
+documentation: SKILL.md
+requires:
+- leaf-evaluator
+optional_requires: []
+trigger: always
+interface:
+  function: run(state, config)
+  state_model: app_entry_rca.core.models.AnalysisState
+produces:
+- final_leaves
+- evidence_graph
+- score_breakdown
+missing_evidence_policy: NOT_OBSERVABLE
+contract_version: '6.0'
+evidence_policy: evidence_first

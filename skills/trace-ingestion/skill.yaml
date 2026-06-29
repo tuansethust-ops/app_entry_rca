@@ -1,0 +1,19 @@
+name: trace-ingestion
+version: 6.3.0
+stage: ingestion
+entrypoint: skill.py
+documentation: SKILL.md
+requires: []
+optional_requires: []
+trigger: always
+interface:
+  function: run(state, config)
+  state_model: app_entry_rca.core.models.AnalysisState
+produces:
+- event_count
+- slice_count
+- sched_interval_count
+- capabilities
+missing_evidence_policy: NOT_OBSERVABLE
+contract_version: '6.0'
+evidence_policy: evidence_first

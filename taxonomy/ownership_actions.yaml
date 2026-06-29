@@ -1,0 +1,6 @@
+patterns:
+  ActivityStarter: {owner: "ATMS/ActivityStarter", action: "Reduce lock-held work and isolate pre/post inner orchestration."}
+  RenderThread: {owner: "HWUI and scheduling policy", action: "Separate Runnable delay from CPU command work and GPU execution."}
+  LoadedArsc: {owner: "Resources/package lifecycle", action: "Distinguish parse CPU, page fault, reclaim and storage latency."}
+  GC: {owner: "ART/process-state/heap policy", action: "Require direct block or competition evidence before changing GC policy."}
+  MediaProvider: {owner: "MediaProvider/database lifecycle", action: "Trace server thread, SQLite and page delivery recursively."}

@@ -1,0 +1,19 @@
+name: system-interference-analysis
+version: 6.3.0
+stage: diagnostic
+entrypoint: skill.py
+documentation: SKILL.md
+requires:
+- phase-localizer
+optional_requires: []
+trigger: routed
+interface:
+  function: run(state, config)
+  state_model: app_entry_rca.core.models.AnalysisState
+produces:
+- top_running_owners_ms
+- irq_softirq_cpu_ms
+- dex2oat_cpu_ms
+missing_evidence_policy: NOT_OBSERVABLE
+contract_version: '6.0'
+evidence_policy: evidence_first

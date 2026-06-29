@@ -1,0 +1,31 @@
+name: app-entry-rca
+version: 1.0.0
+stage: orchestrator
+entrypoint: skill.py
+documentation: SKILL.md
+requires: []
+optional_requires:
+- trace-ingestion
+- launch-context
+- trace-validation
+- phase-localizer
+- running-analysis
+- runnable-analysis
+- wait-dependency-analysis
+- block-io-analysis
+- memory-gc-analysis
+- art-runtime-analysis
+- render-frame-analysis
+- system-interference-analysis
+- leaf-evaluator
+- evidence-graph-ranking
+- report-generator
+trigger: user_requested_workflow
+interface:
+  function: run(state, config)
+  state_model: app_entry_rca.core.models.AnalysisState
+produces:
+- app_entry_rca_report
+missing_evidence_policy: NOT_OBSERVABLE
+contract_version: '6.0'
+evidence_policy: evidence_first

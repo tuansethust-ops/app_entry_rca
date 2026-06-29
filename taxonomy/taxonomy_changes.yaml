@@ -1,0 +1,21 @@
+version: "6.2"
+changes:
+  - {type: CORRECT, node: P7 boundary, reason: End P7 at the end of IActivityClientController::activityIdle::server in system_server}
+  - {type: REMODEL, node: p7.activityidle.post_frame_queue_or_tail_before_system_server_activityidle.post_first_frame_tail_to_system_server_activityidle, reason: Total post-frame tail is umbrella/correlation-only and cannot prove MessageQueue starvation}
+  - {type: ADD, node: p7.activityidle.post_frame_queue_or_tail_before_system_server_activityidle.messagequeue_never_reaches_idle, reason: Preserve MessageQueue-never-idle as a separate evidence-required hypothesis}
+  - {type: RENAME, node: p7.activityidle.activityidle_client_or_server_reporting_and_system_server_handling.system_server_activityidle_handler_duration, reason: Measure the system_server activityIdle handler duration explicitly}
+  - {type: ADD, node: p7.activityidle.activityidle_client_or_server_reporting_and_system_server_handling.system_server_activityidle_monitor_or_lock_contention, reason: Model monitor/lock contention nested inside the canonical activityIdle server endpoint}
+  - {type: ADD, node: p1.touch_duration.input_event_delivery.end_to_end_input_event_delivery_latency, reason: End-to-end eventTimeNano-to-Launcher delivery must not be mislabeled as InputReader-only work}
+  - {type: ADD, node: p1.touch_duration.launch_request_preparation.first_use_class_or_code_initialization_in_launch_request, reason: First-use class/code initialization in launch request}
+  - {type: ADD, node: p2.launch_preparation.task_activity_and_lifecycle_orchestration.activitystarter_outer_orchestration_or_exclusive_work, reason: ActivityStarter outer orchestration outside startActivityInner}
+  - {type: SPLIT, node: p3.bindapplication_or_activitystart.app_side_attach_request_and_binder_transport/p3.bindapplication_or_activitystart.system_server_attach_or_pre_bind_orchestration, reason: Attach transport and system-server preBind lock serialization are distinct}
+  - {type: REMODEL, node: p5.activityresume_or_first_choreographer_doframe.reusable_file_or_page_or_storage_mechanism, reason: File/page/storage is a reusable mechanism rather than a standalone app function}
+  - {type: SPLIT, node: render-thread/hwui/gpu taxonomy groups, reason: Separate scheduling, HWUI CPU, Vulkan, upload and GPU/fence}
+  - {type: SPLIT, node: p8.cross_cutting_system_evidence.direct_gc_blocking/p8.cross_cutting_system_evidence.gc_resource_competition/p8.cross_cutting_system_evidence.gc_overlap_only, reason: Separate direct GC block, exact CPU competition and overlap-only}
+  - {type: CORRECT, node: P2 duration, reason: Report overlap-safe wall union separately from functional sum}
+  - {type: CORRECT, node: P3 boundary, reason: End P3 at bindApplication delivery to avoid double counting the bind body in P3 and P4}
+  - {type: CORRECT, node: p6.first_choreographer_doframe_or_activityidle.frame_scheduling_and_vsync_admission.scheduletraversals_delay, reason: Remove traversal_to_draw_start mapping because it is not a pure frame-scheduling metric}
+  - {type: AUTOMATE, node: p6.first_choreographer_doframe_or_activityidle.measure_and_layout_traversal.performlayout_or_onlayout, reason: Add paired longest RecyclerView onLayout metric inside first traversal}
+  - {type: CORRECT, node: p6.first_choreographer_doframe_or_activityidle.renderthread_scheduling CPU topology, reason: Remove hard-coded CPU6-7 big-core assumption}
+  - {type: CORRECT, node: p8.cross_cutting_system_evidence.gc_resource_competition competition, reason: Replace min(total GC CPU,total Runnable) with same/unknown-CPU interval overlap}
+  - {type: REPORTING, node: FinalLeaf timing, reason: Separate local delta, exclusive contribution, nested deltas and overlap group to prevent double counting}

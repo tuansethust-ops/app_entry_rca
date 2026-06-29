@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "launch_context.schema.json",
+  "type": "object",
+  "required": [
+    "target_package",
+    "launch_type",
+    "target_pid",
+    "system_pid",
+    "markers",
+    "endpoint_semantics",
+    "observability"
+  ],
+  "properties": {
+    "target_package": {"type": "string"},
+    "launch_type": {"enum": ["cold", "warm", "hot", "warm_or_hot"]},
+    "framework_launch_type": {"type": ["string", "null"]},
+    "target_pid": {"type": "integer"},
+    "system_pid": {"type": "integer"},
+    "launcher_pid": {"type": "integer"},
+    "render_tid": {"type": "integer"},
+    "markers": {"type": "object"},
+    "endpoint_semantics": {"type": "string"},
+    "observability": {"type": "object"},
+    "warnings": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

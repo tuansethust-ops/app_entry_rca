@@ -1,0 +1,72 @@
+schema_version: '6.0'
+name: app_entry_rca
+version: 7.0.0-canonical
+description: Evidence-first DUT vs REF app-entry RCA workflow using canonical P1-P7
+  app-launch FTA and P8 cross-cutting evidence.
+error_policy:
+  fail_fast: true
+steps:
+- skill: trace-ingestion
+  execution:
+    mode: always
+    critical: true
+- skill: launch-context
+  execution:
+    mode: always
+    critical: true
+- skill: trace-validation
+  execution:
+    mode: always
+    critical: true
+- skill: phase-localizer
+  execution:
+    mode: always
+    critical: true
+- skill: running-analysis
+  execution:
+    mode: routed
+    critical: false
+- skill: runnable-analysis
+  execution:
+    mode: routed
+    critical: false
+- skill: cpu-core-frequency-analysis
+  execution:
+    mode: routed
+    critical: false
+- skill: wait-dependency-analysis
+  execution:
+    mode: routed
+    critical: false
+- skill: block-io-analysis
+  execution:
+    mode: routed
+    critical: false
+- skill: memory-gc-analysis
+  execution:
+    mode: routed
+    critical: false
+- skill: art-runtime-analysis
+  execution:
+    mode: routed
+    critical: false
+- skill: render-frame-analysis
+  execution:
+    mode: routed
+    critical: false
+- skill: system-interference-analysis
+  execution:
+    mode: routed
+    critical: false
+- skill: leaf-evaluator
+  execution:
+    mode: always
+    critical: true
+- skill: evidence-graph-ranking
+  execution:
+    mode: always
+    critical: true
+- skill: report-generator
+  execution:
+    mode: always
+    critical: true

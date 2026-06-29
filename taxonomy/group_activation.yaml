@@ -1,0 +1,155 @@
+schema_version: '1.0'
+groups:
+  p1.touch_duration.input_event_window:
+    phase: P1
+    requires_any_markers:
+    - input_delivery
+    - active_launch
+  p1.touch_duration.system_server_input_dispatch:
+    phase: P1
+    requires_any_markers:
+    - input_delivery
+    requires_any_capabilities:
+    - sched
+  p1.touch_duration.launcher_input_handling:
+    phase: P1
+    requires_any_markers:
+    - input_delivery
+    - active_launch
+    - launcher_start_activity
+  p2.launch_preparation.system_server_launcher_workflow:
+    phase: P2
+    requires_any_markers:
+    - start_activity_server
+    - start_activity_inner
+  p2.launch_preparation.target_app_process_launch:
+    phase: P2
+    requires_any_markers:
+    - process_request
+    - start_proc
+    - activity_thread_main
+    launch_types:
+    - cold
+  p3.bindapplication_activitystart.framework_bind_application:
+    phase: P3
+    requires_any_markers:
+    - bind_application
+    launch_types:
+    - cold
+  p3.bindapplication_activitystart.app_creation_and_startup:
+    phase: P3
+    requires_any_markers:
+    - bind_application
+    launch_types:
+    - cold
+  p3.bindapplication_activitystart.runtime_and_resource_bootstrap:
+    phase: P3
+    requires_any_markers:
+    - open_dex_oat
+    - load_apk_assets
+    - loaded_arsc
+    requires_any_capabilities:
+    - art_slices
+    launch_types:
+    - cold
+  p4.activitystart_activityresume.activity_lifecycle_start:
+    phase: P4
+    requires_any_markers:
+    - activity_start
+    - perform_create
+  p4.activitystart_activityresume.activity_ui_creation:
+    phase: P4
+    requires_any_markers:
+    - activity_start
+    - inflate
+    - load_apk_assets
+  p4.activitystart_activityresume.activitystart_handoff_and_scheduling:
+    phase: P4
+    requires_any_markers:
+    - activity_start
+    requires_any_capabilities:
+    - sched
+    - binder_slices
+    - blocked_reason
+  p5.activityresume_first_choreographerdoframe.activity_resume_lifecycle:
+    phase: P5
+    requires_any_markers:
+    - activity_resume
+    - perform_resume
+  p5.activityresume_first_choreographerdoframe.post_resume_app_work:
+    phase: P5
+    requires_any_markers:
+    - activity_resume
+    requires_any_capabilities:
+    - sched
+    - blocked_reason
+    - binder_slices
+  p6.first_choreographerdoframe_activityidle.frame_scheduling_and_vsync:
+    phase: P6
+    requires_any_markers:
+    - choreographer_doframe
+    - traversal
+  p6.first_choreographerdoframe_activityidle.view_traversal_and_draw:
+    phase: P6
+    requires_any_markers:
+    - traversal
+    - measure
+    - draw_frames
+  p6.first_choreographerdoframe_activityidle.surface_and_renderthread:
+    phase: P6
+    requires_any_markers:
+    - draw_frames
+    - vulkan_finish
+    - texture_upload
+    - gpu_wait
+    - allocate_buffers
+    - dequeue_buffer
+    requires_any_capabilities:
+    - render_slices
+    - frame_timeline
+  p7.activityidle.activityidle_reporting:
+    phase: P7
+    requires_any_markers:
+    - activity_idle_server
+    - activity_idle_client
+  p7.activityidle.post_first_frame_tail:
+    phase: P7
+    requires_any_markers:
+    - activity_idle_server
+    - choreographer_doframe
+    - traversal
+  p7.activityidle.measurement_endpoint_validation:
+    phase: P7
+    always_if_phase: true
+  p8.cross_cutting_system_evidence.cpu_scheduling:
+    phase: P8
+    requires_any_capabilities:
+    - sched
+    - cpu_frequency
+    - counters
+  p8.cross_cutting_system_evidence.binder_lock_dependency:
+    phase: P8
+    requires_any_capabilities:
+    - binder_slices
+    - binder_transactions
+    - blocked_reason
+  p8.cross_cutting_system_evidence.io_page_fault_storage:
+    phase: P8
+    requires_any_capabilities:
+    - block_io
+    - blocked_reason
+    - page_fault
+  p8.cross_cutting_system_evidence.memory_gc_reclaim:
+    phase: P8
+    requires_any_capabilities:
+    - gc_slices
+    - direct_reclaim
+    - counters
+  p8.cross_cutting_system_evidence.render_gpu_system:
+    phase: P8
+    requires_any_capabilities:
+    - render_slices
+    - frame_timeline
+  p8.cross_cutting_system_evidence.test_environment_config:
+    phase: P8
+    always_if_phase: true

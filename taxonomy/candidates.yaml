@@ -1,0 +1,126 @@
+candidates:
+- id: p1.touch_duration.input_event_window
+  name: Input event window
+  phase: P1
+  canonical_phase_name: Touch Duration
+  canonical_id: p1.touch_duration.input_event_window
+- id: p1.touch_duration.system_server_input_dispatch
+  name: system_server input dispatch
+  phase: P1
+  canonical_phase_name: Touch Duration
+  canonical_id: p1.touch_duration.system_server_input_dispatch
+- id: p1.touch_duration.launcher_input_handling
+  name: Launcher input handling
+  phase: P1
+  canonical_phase_name: Touch Duration
+  canonical_id: p1.touch_duration.launcher_input_handling
+- id: p2.launch_preparation.system_server_launcher_workflow
+  name: P2-1 system_server + launcher workflow
+  phase: P2
+  canonical_phase_name: Launch Preparation
+  canonical_id: p2.launch_preparation.system_server_launcher_workflow
+- id: p2.launch_preparation.target_app_process_launch
+  name: P2-2 target app process launch
+  phase: P2
+  canonical_phase_name: Launch Preparation
+  canonical_id: p2.launch_preparation.target_app_process_launch
+- id: p3.bindapplication_activitystart.framework_bind_application
+  name: Framework bindApplication dispatch
+  phase: P3
+  canonical_phase_name: bindApplication / activityStart
+  canonical_id: p3.bindapplication_activitystart.framework_bind_application
+- id: p3.bindapplication_activitystart.app_creation_and_startup
+  name: Application creation and startup
+  phase: P3
+  canonical_phase_name: bindApplication / activityStart
+  canonical_id: p3.bindapplication_activitystart.app_creation_and_startup
+- id: p3.bindapplication_activitystart.runtime_and_resource_bootstrap
+  name: Runtime/resource bootstrap during bindApplication
+  phase: P3
+  canonical_phase_name: bindApplication / activityStart
+  canonical_id: p3.bindapplication_activitystart.runtime_and_resource_bootstrap
+- id: p4.activitystart_activityresume.activity_lifecycle_start
+  name: Activity start lifecycle
+  phase: P4
+  canonical_phase_name: activityStart / activityResume
+  canonical_id: p4.activitystart_activityresume.activity_lifecycle_start
+- id: p4.activitystart_activityresume.activity_ui_creation
+  name: Activity UI/resource creation
+  phase: P4
+  canonical_phase_name: activityStart / activityResume
+  canonical_id: p4.activitystart_activityresume.activity_ui_creation
+- id: p4.activitystart_activityresume.activitystart_handoff_and_scheduling
+  name: activityStart handoff and scheduling
+  phase: P4
+  canonical_phase_name: activityStart / activityResume
+  canonical_id: p4.activitystart_activityresume.activitystart_handoff_and_scheduling
+- id: p5.activityresume_first_choreographerdoframe.activity_resume_lifecycle
+  name: Activity resume lifecycle
+  phase: P5
+  canonical_phase_name: activityResume / first Choreographer#doFrame
+  canonical_id: p5.activityresume_first_choreographerdoframe.activity_resume_lifecycle
+- id: p5.activityresume_first_choreographerdoframe.post_resume_app_work
+  name: Post-resume app work
+  phase: P5
+  canonical_phase_name: activityResume / first Choreographer#doFrame
+  canonical_id: p5.activityresume_first_choreographerdoframe.post_resume_app_work
+- id: p6.first_choreographerdoframe_activityidle.frame_scheduling_and_vsync
+  name: Frame scheduling and VSync
+  phase: P6
+  canonical_phase_name: first Choreographer#doFrame / activityIdle
+  canonical_id: p6.first_choreographerdoframe_activityidle.frame_scheduling_and_vsync
+- id: p6.first_choreographerdoframe_activityidle.view_traversal_and_draw
+  name: View traversal and draw
+  phase: P6
+  canonical_phase_name: first Choreographer#doFrame / activityIdle
+  canonical_id: p6.first_choreographerdoframe_activityidle.view_traversal_and_draw
+- id: p6.first_choreographerdoframe_activityidle.surface_and_renderthread
+  name: Surface / RenderThread / GPU path
+  phase: P6
+  canonical_phase_name: first Choreographer#doFrame / activityIdle
+  canonical_id: p6.first_choreographerdoframe_activityidle.surface_and_renderthread
+- id: p7.activityidle.activityidle_reporting
+  name: activityIdle reporting
+  phase: P7
+  canonical_phase_name: activityIdle
+  canonical_id: p7.activityidle.activityidle_reporting
+- id: p7.activityidle.post_first_frame_tail
+  name: Post-first-frame tail
+  phase: P7
+  canonical_phase_name: activityIdle
+  canonical_id: p7.activityidle.post_first_frame_tail
+- id: p7.activityidle.measurement_endpoint_validation
+  name: Measurement endpoint validation
+  phase: P7
+  canonical_phase_name: activityIdle
+  canonical_id: p7.activityidle.measurement_endpoint_validation
+- id: p8.cross_cutting_system_evidence.cpu_scheduling
+  name: CPU scheduling and runnable latency
+  phase: P8
+  canonical_phase_name: Cross-cutting System Evidence
+  canonical_id: p8.cross_cutting_system_evidence.cpu_scheduling
+- id: p8.cross_cutting_system_evidence.binder_lock_dependency
+  name: Binder / lock dependency
+  phase: P8
+  canonical_phase_name: Cross-cutting System Evidence
+  canonical_id: p8.cross_cutting_system_evidence.binder_lock_dependency
+- id: p8.cross_cutting_system_evidence.io_page_fault_storage
+  name: I/O, page fault and storage
+  phase: P8
+  canonical_phase_name: Cross-cutting System Evidence
+  canonical_id: p8.cross_cutting_system_evidence.io_page_fault_storage
+- id: p8.cross_cutting_system_evidence.memory_gc_reclaim
+  name: Memory, GC and reclaim
+  phase: P8
+  canonical_phase_name: Cross-cutting System Evidence
+  canonical_id: p8.cross_cutting_system_evidence.memory_gc_reclaim
+- id: p8.cross_cutting_system_evidence.render_gpu_system
+  name: System render/GPU evidence
+  phase: P8
+  canonical_phase_name: Cross-cutting System Evidence
+  canonical_id: p8.cross_cutting_system_evidence.render_gpu_system
+- id: p8.cross_cutting_system_evidence.test_environment_config
+  name: Test environment / config difference
+  phase: P8
+  canonical_phase_name: Cross-cutting System Evidence
+  canonical_id: p8.cross_cutting_system_evidence.test_environment_config

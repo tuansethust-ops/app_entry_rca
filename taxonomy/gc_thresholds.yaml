@@ -1,0 +1,11 @@
+android_runtime_defaults:
+  heapstartsize_mb: 8
+  heapminfree_mb: 2
+  heapmaxfree_mb: 8
+  heaptargetutilization: 0.75
+  heapgrowthlimit_mb: 256
+  heapsize_mb: 512
+notes:
+  - GC trigger is based on allocation/concurrent-start thresholds, not directly on heapgrowthlimit or heapsize.
+  - Foreground heap growth multiplier can differ by product, memory mode or vendor override.
+  - These values are context only unless the trace or dump confirms the actual runtime configuration.

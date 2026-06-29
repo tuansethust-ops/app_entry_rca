@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "leaf_result.schema.json",
+  "type": "object",
+  "required": [
+    "leaf_id",
+    "leaf_name",
+    "phase",
+    "group",
+    "status",
+    "causality",
+    "confidence",
+    "observability"
+  ],
+  "properties": {
+    "leaf_id": {"type": "string"},
+    "leaf_name": {"type": "string"},
+    "phase": {"pattern": "^P[1-8]$"},
+    "group": {"type": "string"},
+    "status": {
+      "enum": [
+        "DUT_REGRESSION",
+        "DUT_BETTER",
+        "EQUIVALENT",
+        "DUT_ONLY",
+        "REF_ONLY",
+        "NOT_APPLICABLE",
+        "NOT_OBSERVABLE",
+        "INSUFFICIENT_EVIDENCE"
+      ]
+    },
+    "causality": {"enum": ["DIRECT", "CONTRIBUTING", "CORRELATION_ONLY", "REJECTED"]},
+    "confidence": {"enum": ["HIGH", "MEDIUM", "LOW"]},
+    "metric_name": {"type": "string"},
+    "metric_unit": {"type": "string"},
+    "dut_value": {"type": ["number", "null"]},
+    "ref_value": {"type": ["number", "null"]},
+    "delta_value": {"type": ["number", "null"]},
+    "threshold_value": {"type": ["number", "null"]},
+    "evidence": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,20 @@
+name: report-generator
+version: 6.3.0
+stage: reporting
+entrypoint: skill.py
+documentation: SKILL.md
+requires:
+- evidence-graph-ranking
+optional_requires: []
+trigger: always
+interface:
+  function: run(state, config)
+  state_model: app_entry_rca.core.models.AnalysisState
+produces:
+- analysis_summary.json
+- all_leaf_nodes.json
+- final_leaf.json
+- report.md
+missing_evidence_policy: NOT_OBSERVABLE
+contract_version: '6.0'
+evidence_policy: evidence_first

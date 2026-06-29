@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "app-entry-rca"
+version = "1.0.0"
+description = "Skill/workflow based Android Perfetto app-entry DUT vs REF analyzer"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["PyYAML>=6.0", "perfetto>=0.16.0"]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
+[project.scripts]
+app-entry-rca = "app_entry_rca.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app_entry_rca*"]
+exclude = ["skills*", "schemas*", "taxonomy*", "workflows*", "tests*", "docs*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]

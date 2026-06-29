@@ -1,0 +1,19 @@
+name: block-io-analysis
+version: 6.3.0
+stage: diagnostic
+entrypoint: skill.py
+documentation: SKILL.md
+requires:
+- phase-localizer
+optional_requires: []
+trigger: routed
+interface:
+  function: run(state, config)
+  state_model: app_entry_rca.core.models.AnalysisState
+produces:
+- critical_d_state_ms
+- page_fault_event_count
+- block_io_event_count
+missing_evidence_policy: NOT_OBSERVABLE
+contract_version: '6.0'
+evidence_policy: evidence_first
