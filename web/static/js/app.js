@@ -367,18 +367,117 @@ window.deleteJob = async function(jobId) {
     }
 };
 
-// Batch mode setup
-document.getElementById('btn-start-batch').addEventListener('click', async () => {
+// Batch mode setup: Quick Scan & Smart Selection
+let currentBatchPairs = [];
+
+document.getElementById('btn-scan-folders').addEventListener('click', async () => {
     const dDir = document.getElementById('batch-dut-dir').value.trim();
     const rDir = document.getElementById('batch-ref-dir').value.trim();
     if(!dDir || !rDir) {
         showToast("Select both DUT and REF directories", "error");
         return;
     }
+    
+    const btn = document.getElementById('btn-scan-folders');
+    btn.innerHTML = 'Scanning...';
+    btn.disabled = true;
+
+    try {
+        const res = await fetch(`${API_BASE}/scan-folders`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ dut_dir: dDir, ref_dir: rDir })
+        });
+        const data = await res.json();
+        if(!res.ok) throw new Error(data.error);
+
+        // Populate Device Info
+        document.getElementById('scan-dut-model').textContent = data.dut.model;
+        document.getElementById('scan-dut-ram').textContent = data.dut.ram;
+        document.getElementById('scan-dut-build').textContent = data.dut.build;
+        document.getElementById('scan-dut-count').textContent = data.dut.total_files;
+
+        document.getElementById('scan-ref-model').textContent = data.ref.model;
+        document.getElementById('scan-ref-ram').textContent = data.ref.ram;
+        document.getElementById('scan-ref-build').textContent = data.ref.build;
+        document.getElementById('scan-ref-count').textContent = data.ref.total_files;
+
+        // Populate Table
+        currentBatchPairs = data.matched_apps;
+        const tbody = document.getElementById('scan-apps-tbody');
+        tbody.innerHTML = '';
+        currentBatchPairs.forEach((pair, i) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><input type="checkbox" class="scan-app-cb" data-index="${i}" ${pair.selected ? 'checked' : ''}></td>
+                <td style="font-weight:600; color:var(--text-main)">${pair.target}</td>
+                <td class="mono" style="font-size:0.8rem; opacity:0.8">${pair.dut_file.split(/[\\/]/).pop()}</td>
+                <td class="mono" style="font-size:0.8rem; opacity:0.8">${pair.ref_file.split(/[\\/]/).pop()}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        // Update selected count
+        const updateCount = () => {
+            const checked = document.querySelectorAll('.scan-app-cb:checked').length;
+            document.getElementById('scan-selected-count').textContent = checked;
+            document.getElementById('btn-start-batch').disabled = checked === 0;
+            // Update internal state
+            document.querySelectorAll('.scan-app-cb').forEach(cb => {
+                currentBatchPairs[cb.dataset.index].selected = cb.checked;
+            });
+        };
+
+        // Attach listeners to checkboxes
+        document.querySelectorAll('.scan-app-cb').forEach(cb => {
+            cb.addEventListener('change', updateCount);
+        });
+        
+        document.getElementById('scan-select-all').checked = true;
+        document.getElementById('scan-select-all').addEventListener('change', (e) => {
+            document.querySelectorAll('.scan-app-cb').forEach(cb => {
+                cb.checked = e.target.checked;
+            });
+            updateCount();
+        });
+
+        updateCount();
+
+        // Show panel
+        document.getElementById('scan-results-panel').style.display = 'block';
+        showToast(`Found ${currentBatchPairs.length} matched pairs`, 'success');
+
+    } catch(e) {
+        showToast(e.message, 'error');
+    } finally {
+        btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Quick Scan Folders';
+        btn.disabled = false;
+    }
+});
+
+// Start Selected Batch
+document.getElementById('btn-start-batch').addEventListener('click', async () => {
+    const selectedPairs = currentBatchPairs.filter(p => p.selected).map(p => ({
+        dut_path: p.dut_file,
+        ref_path: p.ref_file,
+        target: p.target
+    }));
+
+    if (selectedPairs.length === 0) return;
+
     const payload = {
-        dut_dir: dDir, ref_dir: rDir,
+        pairs: selectedPairs,
         backend: document.getElementById('opt-backend').value,
+        options: {
+            include_better_final: document.getElementById('opt-include-better').checked,
+            include_correlation: document.getElementById('opt-include-correlation').checked
+        }
     };
+    
+    const btn = document.getElementById('btn-start-batch');
+    btn.innerHTML = 'Submitting...';
+    btn.disabled = true;
+
     try {
         const res = await fetch(`${API_BASE}/batch`, {
             method: 'POST',
@@ -387,10 +486,16 @@ document.getElementById('btn-start-batch').addEventListener('click', async () =>
         });
         const data = await res.json();
         if(!res.ok) throw new Error(data.error);
-        showToast(`Started ${data.count} jobs`, 'success');
+        showToast(`Started ${data.count} jobs successfully`, 'success');
+        
+        // Hide scan panel and switch to jobs view
+        document.getElementById('scan-results-panel').style.display = 'none';
         switchView('jobs');
     } catch(e) {
         showToast(e.message, 'error');
+    } finally {
+        btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> Start Selected Jobs';
+        btn.disabled = false;
     }
 });
 

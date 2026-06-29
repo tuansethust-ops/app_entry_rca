@@ -122,13 +122,13 @@ async def start_analysis(body: Dict[str, Any]):
     return {"job_id": job.id, "status": job.status}
 
 
-@app.post("/api/batch")
-async def start_batch(body: Dict[str, Any]):
-    """Start batch analysis for multiple DUT-REF pairs in directories."""
+import re
+
+@app.post("/api/scan-folders")
+async def scan_folders(body: Dict[str, Any]):
+    """Quickly scan folders to extract device metadata and paired apps."""
     dut_dir = body.get("dut_dir", "")
     ref_dir = body.get("ref_dir", "")
-    backend = body.get("backend", "auto")
-    options = body.get("options", {})
 
     dut_path = Path(dut_dir)
     ref_path = Path(ref_dir)
@@ -138,25 +138,73 @@ async def start_batch(body: Dict[str, Any]):
     if not ref_path.is_dir():
         return JSONResponse({"error": f"REF directory not found: {ref_dir}"}, status_code=400)
 
-    # Find trace files
     trace_exts = {".log", ".perfetto", ".pftrace", ".systrace", ".trace"}
-    dut_files = {f.stem: f for f in dut_path.iterdir() if f.suffix.lower() in trace_exts}
-    ref_files = {f.stem: f for f in ref_path.iterdir() if f.suffix.lower() in trace_exts}
+    
+    # regex to match: A075FYG3_VOS_4GB_250709_S1_250709_092927_helloworld.log
+    # or just try to extract components. We make it flexible.
+    pattern = re.compile(r"^(?P<device>[^_]+)_(?P<os>[^_]+)_(?P<ram>\d+GB)_(?P<build>\d+)_.*?(?:_(?P<app>[a-zA-Z0-9]+))?\.(?:log|perfetto|pftrace|systrace|trace)$", re.IGNORECASE)
 
-    # Auto-pair by filename
-    paired = []
-    for name in sorted(dut_files.keys()):
-        if name in ref_files:
-            paired.append((str(dut_files[name]), str(ref_files[name]), name))
+    def parse_folder(path: Path):
+        meta = {"model": "Unknown", "os": "Unknown", "ram": "Unknown", "build": "Unknown", "total_files": 0}
+        files = {}
+        for f in path.iterdir():
+            if f.is_file() and f.suffix.lower() in trace_exts:
+                meta["total_files"] += 1
+                m = pattern.match(f.name)
+                if m:
+                    g = m.groupdict()
+                    meta["model"] = g.get("device", meta["model"])
+                    meta["os"] = g.get("os", meta["os"])
+                    meta["ram"] = g.get("ram", meta["ram"])
+                    meta["build"] = g.get("build", meta["build"])
+                    app_name = g.get("app") or f.stem.split("_")[-1]
+                    files[app_name] = f
+                else:
+                    # Fallback: use the part after the last underscore, or the whole stem
+                    parts = f.stem.split("_")
+                    app_name = parts[-1] if len(parts) > 1 else f.stem
+                    files[app_name] = f
+        return meta, files
 
-    if not paired:
-        return JSONResponse(
-            {"error": "No matching trace file pairs found between DUT and REF directories."},
-            status_code=400,
-        )
+    dut_meta, dut_files = parse_folder(dut_path)
+    ref_meta, ref_files = parse_folder(ref_path)
+
+    matched_apps = []
+    for app_name in sorted(dut_files.keys()):
+        if app_name in ref_files:
+            matched_apps.append({
+                "target": app_name,
+                "dut_file": str(dut_files[app_name]),
+                "ref_file": str(ref_files[app_name]),
+                "selected": True
+            })
+
+    return {
+        "dut": dut_meta,
+        "ref": ref_meta,
+        "matched_apps": matched_apps
+    }
+
+
+@app.post("/api/batch")
+async def start_batch(body: Dict[str, Any]):
+    """Start batch analysis for specific selected DUT-REF pairs."""
+    pairs = body.get("pairs", [])
+    backend = body.get("backend", "auto")
+    options = body.get("options", {})
+
+    if not pairs:
+        return JSONResponse({"error": "No pairs provided for batch analysis."}, status_code=400)
 
     job_ids = []
-    for dut_f, ref_f, target_name in paired:
+    for pair in pairs:
+        dut_f = pair.get("dut_path")
+        ref_f = pair.get("ref_path")
+        target_name = pair.get("target", "")
+        
+        if not dut_f or not ref_f:
+            continue
+            
         job = job_manager.create_job(
             dut_path=dut_f,
             ref_path=ref_f,

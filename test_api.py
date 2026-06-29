@@ -31,3 +31,14 @@ def test_api():
 
 if __name__ == "__main__":
     test_api()
+    print("Testing /api/scan-folders")
+    response = client.post("/api/scan-folders", json={
+        "dut_dir": "tests/mock_traces/DUT",
+        "ref_dir": "tests/mock_traces/REF"
+    })
+    assert response.status_code == 200
+    data = response.json()
+    assert data["dut"]["model"] == "A077F"
+    assert data["ref"]["model"] == "A075F"
+    assert len(data["matched_apps"]) == 2
+    print("Scan test passed!")

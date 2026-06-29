@@ -285,6 +285,15 @@ td.num { text-align: right; }
 .toast.success { border-left-color: var(--color-success); }
 @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
+/* Scan Results UI */
+.scan-results-panel { background: rgba(0,0,0,0.15); border-radius: var(--radius-md); padding: 1.25rem; border: 1px solid var(--border-glass); }
+.scan-device-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.scan-card { background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); padding: 1rem; border-radius: var(--radius-sm); }
+.scan-card strong { color: var(--accent-blue); font-size: 1.1rem; margin-right: 0.5rem; }
+.scan-card .scan-sub { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem; }
+.scan-results-panel table th, .scan-results-panel table td { padding: 0.5rem; }
+.scan-results-panel tbody tr:hover td { background: rgba(255,255,255,0.05); }
+
 /* Responsive */
 @media (max-width: 768px) {
     .analyze-grid { grid-template-columns: 1fr; }
