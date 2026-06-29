@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Entry RCA Analyzer</title>
+    <meta name="description" content="Evidence-driven Android app-entry performance regression analysis tool">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- ─── Header ─── -->
+    <header class="app-header">
+        <div class="header-left">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="8" fill="url(#logo-gradient)"/>
+                    <path d="M8 22L16 10L24 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="16" cy="18" r="2.5" fill="white"/>
+                    <defs><linearGradient id="logo-gradient" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#667eea"/><stop offset="1" stop-color="#764ba2"/></linearGradient></defs>
+                </svg>
+            </div>
+            <div class="header-title">
+                <h1>App Entry RCA</h1>
+                <span class="version">v7.0.0-canonical</span>
+            </div>
+        </div>
+        <nav class="header-nav">
+            <button class="nav-btn active" data-view="analyze" id="nav-analyze">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                Analyze
+            </button>
+            <button class="nav-btn" data-view="jobs" id="nav-jobs">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                Jobs
+            </button>
+        </nav>
+    </header>
+
+    <!-- ─── Main Content ─── -->
+    <main class="app-main">
+
+        <!-- ═══ View: Analyze ═══ -->
+        <section id="view-analyze" class="view active">
+            <div class="analyze-grid">
+                <!-- DUT Path -->
+                <div class="path-card glass" id="dut-card">
+                    <div class="path-card-header">
+                        <span class="path-label dut-label">DUT</span>
+                        <span class="path-hint">Device Under Test</span>
+                    </div>
+                    <div class="path-input-group">
+                        <input type="text" id="dut-path" class="path-input" placeholder="Paste trace file path or browse..." spellcheck="false">
+                        <button class="btn-browse" id="btn-browse-dut" title="Browse filesystem">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+                        </button>
+                    </div>
+                    <div class="path-file-info" id="dut-info"></div>
+                </div>
+
+                <!-- REF Path -->
+                <div class="path-card glass" id="ref-card">
+                    <div class="path-card-header">
+                        <span class="path-label ref-label">REF</span>
+                        <span class="path-hint">Reference Baseline</span>
+                    </div>
+                    <div class="path-input-group">
+                        <input type="text" id="ref-path" class="path-input" placeholder="Paste trace file path or browse..." spellcheck="false">
+                        <button class="btn-browse" id="btn-browse-ref" title="Browse filesystem">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+                        </button>
+                    </div>
+                    <div class="path-file-info" id="ref-info"></div>
+                </div>
+            </div>
+
+            <!-- Advanced Options -->
+            <details class="options-panel glass" id="options-panel">
+                <summary class="options-toggle">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 00-2 2v.18a2 2 0 01-1 1.73l-.43.25a2 2 0 01-2 0l-.15-.08a2 2 0 00-2.73.73l-.22.38a2 2 0 00.73 2.73l.15.1a2 2 0 011 1.72v.51a2 2 0 01-1 1.74l-.15.09a2 2 0 00-.73 2.73l.22.38a2 2 0 002.73.73l.15-.08a2 2 0 012 0l.43.25a2 2 0 011 1.73V20a2 2 0 002 2h.44a2 2 0 002-2v-.18a2 2 0 011-1.73l.43-.25a2 2 0 012 0l.15.08a2 2 0 002.73-.73l.22-.39a2 2 0 00-.73-2.73l-.15-.08a2 2 0 01-1-1.74v-.5a2 2 0 011-1.74l.15-.09a2 2 0 00.73-2.73l-.22-.38a2 2 0 00-2.73-.73l-.15.08a2 2 0 01-2 0l-.43-.25a2 2 0 01-1-1.73V4a2 2 0 00-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Advanced Options
+                </summary>
+                <div class="options-content">
+                    <div class="option-row">
+                        <label for="opt-backend">Backend</label>
+                        <select id="opt-backend" class="opt-select">
+                            <option value="auto" selected>Auto-detect</option>
+                            <option value="systrace">Systrace (text)</option>
+                            <option value="perfetto">Perfetto SQL</option>
+                        </select>
+                    </div>
+                    <div class="option-row">
+                        <label for="opt-target">Target Package</label>
+                        <input type="text" id="opt-target" class="opt-input" placeholder="auto-detect">
+                    </div>
+                    <div class="option-row checkboxes">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="opt-include-better"> Include better/equivalent finals
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="opt-include-correlation"> Include correlation-only candidates
+                        </label>
+                    </div>
+                </div>
+            </details>
+
+            <!-- Start Button -->
+            <div class="analyze-actions">
+                <button class="btn-primary btn-analyze" id="btn-start-analysis" disabled>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    Start Analysis
+                </button>
+            </div>
+
+            <!-- Batch Mode -->
+            <details class="batch-panel glass">
+                <summary class="options-toggle">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    Batch Mode — Compare Folders
+                </summary>
+                <div class="options-content">
+                    <div class="option-row">
+                        <label for="batch-dut-dir">DUT Folder</label>
+                        <div class="path-input-group compact">
+                            <input type="text" id="batch-dut-dir" class="opt-input" placeholder="/path/to/dut/traces/">
+                            <button class="btn-browse-sm" id="btn-browse-batch-dut" title="Browse">📁</button>
+                        </div>
+                    </div>
+                    <div class="option-row">
+                        <label for="batch-ref-dir">REF Folder</label>
+                        <div class="path-input-group compact">
+                            <input type="text" id="batch-ref-dir" class="opt-input" placeholder="/path/to/ref/traces/">
+                            <button class="btn-browse-sm" id="btn-browse-batch-ref" title="Browse">📁</button>
+                        </div>
+                    </div>
+                    <button class="btn-primary btn-batch" id="btn-start-batch">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        Start Batch Analysis
+                    </button>
+                </div>
+            </details>
+        </section>
+
+        <!-- ═══ View: Live Analysis ═══ -->
+        <section id="view-live" class="view">
+            <div class="live-header glass">
+                <div class="live-title">
+                    <h2 id="live-job-title">Analyzing...</h2>
+                    <span class="live-job-id" id="live-job-id"></span>
+                </div>
+                <button class="btn-secondary btn-cancel" id="btn-cancel-job" title="Cancel">✕ Cancel</button>
+            </div>
+
+            <!-- Progress -->
+            <div class="progress-container glass">
+                <div class="progress-bar-track">
+                    <div class="progress-bar-fill" id="progress-bar" style="width: 0%"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="progress-percent">0%</span>
+                    <span id="progress-detail">0/0 skills</span>
+                </div>
+            </div>
+
+            <!-- Skill Pipeline -->
+            <div class="pipeline-container glass">
+                <h3 class="section-title">Skill Pipeline</h3>
+                <div class="pipeline-list" id="pipeline-list"></div>
+            </div>
+
+            <!-- Live Log -->
+            <div class="log-container glass">
+                <div class="log-header">
+                    <h3 class="section-title">Live Log</h3>
+                    <button class="btn-icon" id="btn-clear-log" title="Clear log">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+                    </button>
+                </div>
+                <div class="log-output" id="log-output"></div>
+            </div>
+        </section>
+
+        <!-- ═══ View: Report Dashboard ═══ -->
+        <section id="view-report" class="view">
+            <div class="report-header glass">
+                <h2>Analysis Report</h2>
+                <div class="report-actions">
+                    <button class="btn-secondary" id="btn-download-zip">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        Download ZIP
+                    </button>
+                    <button class="btn-secondary" id="btn-back-to-analyze">← New Analysis</button>
+                </div>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="summary-cards" id="summary-cards"></div>
+
+            <!-- Phase Comparison Chart -->
+            <div class="report-section glass">
+                <h3 class="section-title">Phase Comparison (DUT vs REF)</h3>
+                <div class="chart-container">
+                    <canvas id="phase-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- Final Leaves Table -->
+            <div class="report-section glass">
+                <h3 class="section-title">
+                    Ranked Root Cause Candidates
+                    <span class="badge" id="leaf-count-badge"></span>
+                </h3>
+                <div class="table-controls">
+                    <select id="filter-phase" class="filter-select">
+                        <option value="">All Phases</option>
+                        <option value="P1">P1</option><option value="P2">P2</option>
+                        <option value="P3">P3</option><option value="P4">P4</option>
+                        <option value="P5">P5</option><option value="P6">P6</option>
+                        <option value="P7">P7</option><option value="P8">P8</option>
+                    </select>
+                    <select id="filter-status" class="filter-select">
+                        <option value="">All Status</option>
+                        <option value="DUT_REGRESSION">DUT_REGRESSION</option>
+                        <option value="DUT_BETTER">DUT_BETTER</option>
+                        <option value="EQUIVALENT">EQUIVALENT</option>
+                        <option value="NOT_OBSERVABLE">NOT_OBSERVABLE</option>
+                    </select>
+                </div>
+                <div class="table-wrapper" id="leaves-table-wrapper"></div>
+            </div>
+
+            <!-- Evidence Graph -->
+            <div class="report-section glass">
+                <h3 class="section-title">Evidence Graph</h3>
+                <div class="evidence-tree" id="evidence-tree"></div>
+            </div>
+
+            <!-- Timing Waterfall -->
+            <div class="report-section glass">
+                <h3 class="section-title">Timing Waterfall</h3>
+                <div class="waterfall-container" id="waterfall-container"></div>
+            </div>
+
+            <!-- Skill Runs -->
+            <div class="report-section glass">
+                <h3 class="section-title">Skill Execution Summary</h3>
+                <div class="chart-container chart-sm">
+                    <canvas id="skill-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- Raw Metrics -->
+            <div class="report-section glass">
+                <h3 class="section-title">
+                    Raw Metrics (DUT vs REF)
+                    <input type="text" id="metric-search" class="metric-search" placeholder="Search metrics...">
+                </h3>
+                <div class="table-wrapper" id="metrics-table-wrapper"></div>
+            </div>
+        </section>
+
+        <!-- ═══ View: Jobs History ═══ -->
+        <section id="view-jobs" class="view">
+            <div class="jobs-header glass">
+                <h2>Analysis History</h2>
+                <button class="btn-secondary" id="btn-refresh-jobs">↻ Refresh</button>
+            </div>
+            <div class="jobs-list" id="jobs-list"></div>
+        </section>
+    </main>
+
+    <!-- ─── File Browser Modal ─── -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal glass" id="file-browser-modal">
+            <div class="modal-header">
+                <h3>Browse Files</h3>
+                <button class="btn-icon modal-close" id="modal-close">✕</button>
+            </div>
+            <div class="modal-breadcrumb" id="browser-breadcrumb"></div>
+            <div class="modal-body" id="browser-file-list"></div>
+            <div class="modal-footer">
+                <span class="modal-selected" id="browser-selected"></span>
+                <button class="btn-primary" id="browser-select-btn" disabled>Select</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── Toast Notification ─── -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

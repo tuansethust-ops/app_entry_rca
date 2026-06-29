@@ -41,6 +41,7 @@ def run_workflow(
     workflow_path: Path,
     inputs: Dict[str, str],
     options: Dict[str, Any],
+    event_callback=None,
 ) -> AnalysisState:
     workflow = load_yaml(workflow_path)
     _validate_workflow(project_root, workflow)
@@ -53,9 +54,13 @@ def run_workflow(
         "options": {k: v for k, v in options.items() if k not in {"secret"}},
     }
     fail_fast = bool(workflow.get("error_policy", {}).get("fail_fast", True))
+    
+    total_steps = len(workflow.get("steps", []))
+    if event_callback:
+        event_callback("job.started", {"workflow": workflow.get("name"), "total_steps": total_steps})
 
     try:
-        for step in workflow.get("steps", []):
+        for i, step in enumerate(workflow.get("steps", [])):
             name = step["skill"]
             mode, critical = _execution(step)
             route_reason = "always"
@@ -73,13 +78,25 @@ def run_workflow(
                             warnings=["Skipped by evidence-aware router."],
                         )
                     )
+                    if event_callback:
+                        event_callback("skill.skipped", {"skill": name, "step": i + 1, "total": total_steps, "reason": "not selected"})
                     continue
                 route_reason = "; ".join(state.routing_reasons.get(name, ["selected by router"]))
 
+            if event_callback:
+                event_callback("skill.started", {"skill": name, "step": i + 1, "total": total_steps})
+
             record = execute_skill(state, name, step.get("config", {}), route_reason=route_reason)
             state.skill_runs.append(record)
-            if record.status == "ERROR" and critical and fail_fast:
-                raise RuntimeError(f"Skill {name} failed: {record.error}")
+            
+            if record.status == "ERROR":
+                if event_callback:
+                    event_callback("skill.error", {"skill": name, "error": record.error, "step": i + 1, "total": total_steps})
+                if critical and fail_fast:
+                    raise RuntimeError(f"Skill {name} failed: {record.error}")
+            else:
+                if event_callback:
+                    event_callback("skill.completed", {"skill": name, "status": record.status, "duration_ms": record.duration_ms, "step": i + 1, "total": total_steps})
 
         if state.output_files:
             from app_entry_rca.reporting.writers import dump
@@ -89,7 +106,15 @@ def run_workflow(
                 "routing_reasons": state.routing_reasons,
                 "runs": [item.to_dict() for item in state.skill_runs],
             })
+        
+        if event_callback:
+            event_callback("job.completed", {"output_files": state.output_files})
         return state
+    except Exception as exc:
+        if event_callback:
+            import traceback
+            event_callback("job.failed", {"error": str(exc), "traceback": traceback.format_exc()})
+        raise
     finally:
         for trace in state.traces.values():
             try:

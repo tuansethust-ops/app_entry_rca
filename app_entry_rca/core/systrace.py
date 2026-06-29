@@ -272,11 +272,11 @@ class Systrace:
             'counters': 'tracing_mark_write' in events or 'counter' in events,
         }
 
-    def running_occupants(self, intervals: Iterable[StateInterval], cpus=(6,7), exclude_tids=()) -> Dict[str,float]:
+    def running_occupants(self, intervals: Iterable[StateInterval], cpus=(), exclude_tids=()) -> Dict[str,float]:
         out=collections.Counter(); ex=set(exclude_tids)
         windows=list(intervals)
         for run in self.running:
-            if run.tid in ex or run.cpu not in cpus: continue
+            if run.tid in ex or (cpus and run.cpu not in cpus): continue
             ov=0.0
             for w in windows:
                 ov += max(0.0,min(run.end,w.end)-max(run.start,w.start))
