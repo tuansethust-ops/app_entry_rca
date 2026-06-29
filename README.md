@@ -2,8 +2,28 @@
 
 Evidence-driven DUT-vs-REF Android app-entry analysis using canonical P1-P7 app-launch FTA phases, P8 cross-cutting evidence, semantic leaf IDs, reusable diagnostic skills and a deterministic workflow.
 
+`app_entry_rca` is **one workflow** that orchestrates multiple reusable skills. It can be run directly on Windows/Linux/macOS, invoked from Cline as `/app_entry_rca`, or accessed via the **Interactive Web UI**.
 
-`app_entry_rca` is **one workflow** that orchestrates multiple reusable skills. It can be run directly on Windows/Linux/macOS or invoked from Cline as `/app_entry_rca`.
+## Interactive Web UI (New) 🌟
+
+The analyzer now includes a modern, high-performance web interface for visualizing trace comparisons, tracking progress in real-time, and exploring interactive reports.
+
+### Features
+- **File Browser**: Select local `.log` or `.perfetto` traces directly from your filesystem without uploading.
+- **Live Analysis**: Real-time progress tracking and live log streaming via WebSockets.
+- **Interactive Dashboards**: Sortable root cause tables, phase comparison Gantt charts, and evidence trees.
+- **Batch Mode**: Analyze entire directories of trace files concurrently.
+
+### Run Web Server
+
+```bash
+# Ensure dependencies are installed
+pip install fastapi uvicorn python-multipart pyyaml aiofiles
+
+# Launch the server
+python run_web.py
+```
+Then navigate to `http://localhost:8000` in your browser.
 
 ## One workflow, multiple skills
 
@@ -54,7 +74,7 @@ Mention the DUT and REF trace paths. Cline will run the same deterministic Pytho
 - Added `p1.touch_duration.input_event_delivery.end_to_end_input_event_delivery_latency End-to-end input event delivery latency`; `p1.touch_duration.input_event_delivery.inputreader_processing_delay` remains dedicated to true InputReader processing.
 - Added contract, taxonomy, routing, phase-semantics and golden DUT/REF tests.
 
-## Run
+## Run (CLI)
 
 ```bash
 python app_entry_rca.py \
